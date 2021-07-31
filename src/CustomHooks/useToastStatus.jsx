@@ -1,15 +1,18 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
-function ToastModalView(initial) {
+function useToastStatus(initial) {
     const [isShowing, setIsShowing] = useState(initial);
 
-    if (isShowing) {
-        const timer = setTimeout(() => {
-            setIsShowing(false);
-        }, 2500);
-        return () => clearTimeout(timer);
-    }
+    useEffect(() => {
+        if (isShowing) {
+            const notiTimer = setTimeout(() => {
+                setIsShowing(false);
+            }, 2500);
+            return () => clearTimeout(notiTimer);
+        }
+    }, [isShowing]);
+
     return [isShowing, setIsShowing];
 }
 
-export default ToastModalView;
+export default useToastStatus;

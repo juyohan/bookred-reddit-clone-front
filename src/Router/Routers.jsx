@@ -1,25 +1,31 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Route, Switch} from "react-router-dom";
-import Home from "../Home";
-import Header from "../Header";
+import Home from "../Component/Home";
+import PrivateRoute from "./PrivateRoute";
 
-const Routers = ({match, location}) => {
-    console.log(JSON.stringify(match,null,2));
-    console.log(JSON.stringify(location,null,2));
+const Routers = () => {
+    const [user, setUser] = useState(null);
 
     return (
-        <>
-            <Switch>
-                <Route path={'/:sort'}>
-                    <Home/>
-                </Route>
-                <Route exact path={'/'}>
-                    <Header/>
-                    <Home/>
-                </Route>
-                {/*<Route exact path={'/'} component={Home}/>*/}
-            </Switch>
-        </>
+        <Switch>
+            {/* 홈 화면 */}
+            <Route exact path={'/'}>
+                <Home/>
+            </Route>
+            <Route path={'/hot'}>
+                <Home/>
+            </Route>
+
+
+            <PrivateRoute path={'/profile'}
+                          render={props =>
+                              <Home user={user}
+                                    {...props}
+                              />
+                          }
+            />
+
+        </Switch>
     );
 }
 

@@ -1,10 +1,13 @@
 import React from 'react';
 import {HomeWrapper} from "./Home.styles";
+import Header from "../Header";
 
-function Home () {
+const Home = () => {
+    // console.log("Home : " + useLocation().pathname);
+
     return (
         <HomeWrapper>
-            Hello Home
+            <Header/>
         </HomeWrapper>
     );
 }
