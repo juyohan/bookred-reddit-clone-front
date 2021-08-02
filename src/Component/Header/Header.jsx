@@ -1,8 +1,10 @@
 import React from 'react';
-import HeaderMenu from "./HeaderMenu";
-import {HeaderWrapper, Logo} from "./Header.styles";
 import {SiReddit} from "react-icons/all";
+// css
+import {HeaderWrapper, Logo} from "./Header.styles";
+// 컴포넌트
 import HeaderAuth from "./HeaderAuth";
+import HeaderMenu from "./HeaderMenu";
 
 const Header = () => {
 

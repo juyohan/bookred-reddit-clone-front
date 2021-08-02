@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from "prop-types";
+// css
 import {MessageAction, MessageWrapper} from "./ToastModal.styles";
 
 const ToastModal = ({message, isShowing}) => {
@@ -12,6 +14,11 @@ const ToastModal = ({message, isShowing}) => {
         );
     else
         return null;
+}
+
+ToastModal.propTypes = {
+    message : PropTypes.string,
+    isShowing : PropTypes.bool,
 }
 
 export default ToastModal;

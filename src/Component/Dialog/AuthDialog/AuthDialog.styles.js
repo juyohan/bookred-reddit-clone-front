@@ -82,7 +82,7 @@ export const IWLInput = styled.input`
 
 `;
 
-export const SignButton = styled.div`
+export const AuthButton = styled.div`
   margin-top: 1rem;
   padding-top: 0.6rem;
   padding-bottom: 0.6rem;

@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from "prop-types";
 // css
-import {AuthHandlerWrapper, AuthTitle, SignButton} from "../AuthDialog.styles";
+import {AuthHandlerWrapper, AuthTitle, AuthButton} from "../AuthDialog.styles";
 // Component
 import ToastModal from "../../../Modal/ToastModal";
 import InputWithLabel from "../InputWithLabel";
@@ -16,7 +16,7 @@ const SignIn = ({setMode}) => {
     const [{email, pw}, onChange, reset] = useInput({
         email : '',
         pw : ''
-    });
+    },'login');
 
     const [isShowing, setIsShowing] = useToastStatus(false);
 
@@ -70,11 +70,11 @@ const SignIn = ({setMode}) => {
                             icon
             />
 
-            <SignButton type={"button"}
+            <AuthButton type={"button"}
                         onClick={onLogin}
             >
                 로그인
-            </SignButton>
+            </AuthButton>
             <AuthHandlerWrapper>
                 <AuthHandler to={'/signup'}
                              setMode={setMode}

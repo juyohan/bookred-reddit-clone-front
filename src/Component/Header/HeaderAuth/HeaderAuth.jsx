@@ -1,6 +1,8 @@
 import React, {useState} from 'react';
-import {HeaderAuthWrapper, Login, Logo, UserInfo, Username} from "./HeaderAuth.styles";
 import {BsFillCaretDownFill} from "react-icons/all";
+// css
+import {HeaderAuthWrapper, Login, Logo, UserInfo, Username} from "./HeaderAuth.styles";
+// 컴포넌트
 import Token from "../../../JwtToken/Token";
 import AuthDialog from "../../Dialog/AuthDialog";
 

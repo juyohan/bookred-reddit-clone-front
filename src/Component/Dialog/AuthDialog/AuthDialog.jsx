@@ -1,4 +1,7 @@
 import React, {useState, useEffect} from 'react';
+import PropTypes from "prop-types";
+import {IoClose} from "react-icons/all";
+// css
 import {
     AuthDialogBackGround,
     AuthDialogContent,
@@ -6,8 +9,7 @@ import {
     AuthDialogLogo,
     AuthDialogWrapper
 } from "./AuthDialog.styles";
-import PropTypes from "prop-types";
-import {IoClose} from "react-icons/all";
+// 컴포넌트
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import FindPw from "./FindPw/FindPw";

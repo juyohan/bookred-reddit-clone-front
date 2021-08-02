@@ -1,6 +1,7 @@
 import React from 'react';
-import {AuthBottomRight, AuthBottomRightWrapper} from "./AuthDialog.styles";
 import PropTypes from "prop-types";
+// css
+import {AuthBottomRight, AuthBottomRightWrapper} from "./AuthDialog.styles";
 
 const AuthHandler = ({to, setMode, name, children}) => {
     const onHandler = (e) => {

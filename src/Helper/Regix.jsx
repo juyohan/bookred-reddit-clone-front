@@ -5,13 +5,13 @@ export const isEmail = email => {
 };
 
 export const isPw = pw => {
-    const pwRegex = /^.*(?=^.{8,15}$)(?=.*\d)(?=.*[a-zA-Z])(?=.*[!@#$%^&+=]).*$/;
+    const pwRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[$@$!%*#?&])[A-Za-z\d$@$!%*#?&]{8,15}$/;
 
     return pwRegex.test(pw);
 };
 
-export const isUsername = username => {
-    const usernameRegex = /^[가-힣|a-z|A-Z|0-9|\_]{2,10}$/;
+export const isNickname = nickname => {
+    const nicknameRegex = /^[가-힣|a-z|A-Z|0-9|\_]{2,10}$/;
 
-    return usernameRegex.test(username);
+    return nicknameRegex.test(nickname);
 };

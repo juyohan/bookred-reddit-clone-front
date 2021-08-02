@@ -1,6 +1,8 @@
 import React from 'react';
 import PropTypes from "prop-types";
+// css
 import {MenuItems} from "./HeaderMenu.styles";
+// 컴포넌트
 import SingleItem from "./SingleItem";
 
 const menuList = [

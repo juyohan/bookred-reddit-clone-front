@@ -1,4 +1,5 @@
 import {useState, useEffect} from 'react';
+import PropTypes from "prop-types";
 
 function useToastStatus(initial) {
     const [isShowing, setIsShowing] = useState(initial);
@@ -13,6 +14,10 @@ function useToastStatus(initial) {
     }, [isShowing]);
 
     return [isShowing, setIsShowing];
+}
+
+useToastStatus.propTypes = {
+    initial : PropTypes.bool,
 }
 
 export default useToastStatus;

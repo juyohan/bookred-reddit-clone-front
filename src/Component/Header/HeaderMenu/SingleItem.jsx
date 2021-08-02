@@ -1,6 +1,7 @@
 import React from 'react';
-import {Item} from "./HeaderMenu.styles";
 import PropTypes from 'prop-types';
+// css
+import {Item} from "./HeaderMenu.styles";
 
 const SingleItem = ({item, active}) => {
     return (

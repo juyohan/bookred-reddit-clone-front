@@ -1,7 +1,8 @@
 import React from 'react';
-import {IWLInput, IWLInputLine, IWLLabel, IWLWrapper} from "./AuthDialog.styles";
 import PropTypes from "prop-types";
 import {BiLockAlt, HiOutlineMail} from "react-icons/all";
+// css
+import {IWLInput, IWLInputLine, IWLLabel, IWLWrapper} from "./AuthDialog.styles";
 
 const InputWithLabel = ({ label, name, icon, ...rest}) => (
     <IWLWrapper>
