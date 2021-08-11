@@ -1,22 +1,40 @@
-import React from 'react';
+import React, {useContext, useEffect} from 'react';
 import {Route, Redirect} from "react-router-dom";
 import Token from "../JwtToken/Token";
+import AuthDialog from "../Component/Dialog/AuthDialog";
+import UserContext from "../Context/UserContext";
+import GlobalContext from "../Context/GlobalContext";
+import DialogContext from "../Context/DialogContext";
 
-const PrivateRoute = ({ component: Component, render, ...rest}) => {
+const PrivateRoute = ({component: Component, render, ...rest}) => {
+    const [show, setShow] = useContext(DialogContext);
+    const [path, setPath] = useContext(GlobalContext);
+
+    useEffect(() => {
+        if (!Token())
+            setShow.setAuthDialog(true);
+    }, [setShow]);
+
     return (
         <Route {...rest}
-            render={(props) => Token() ? (
-                render ? (
-                    render(props)
-                ) : (
-                    <Component {...props}/>
-                )
-            ) : (
-                <Redirect
-                    to={{pathname : '/login', state : { from : props.location}}}
-                />
-            )}
-            />
+               render={(props) =>
+                   Token() ? ( // token이 있을 때
+                       render ? ( // render에 값이 있을 때
+                           render(props)
+                       ) : ( // render에 값이 없을 때
+                           <Component {...props}/>
+                       )
+                   ) : ( // token이 없을 때
+                       <>
+                           <Redirect to={{
+                               pathname: path.router.prevPath,
+                               state: {from: props.location}
+                           }}
+                           />
+                           <AuthDialog/>
+                       </>
+                   )}
+        />
     );
 }
 

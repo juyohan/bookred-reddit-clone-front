@@ -1,5 +1,4 @@
-import React, {useState, useEffect} from 'react';
-import PropTypes from "prop-types";
+import React, {useState, useEffect, useContext} from 'react';
 import {IoClose} from "react-icons/all";
 // css
 import {
@@ -13,20 +12,25 @@ import {
 import SignIn from "./SignIn";
 import SignUp from "./SignUp";
 import FindPw from "./FindPw/FindPw";
+import DialogContext from "../../../Context/DialogContext";
 
-const AuthDialog = ({isShowing, close}) => {
+const AuthDialog = () => {
     const [mode, setMode] = useState('login');
+    const [show, setShow] = useContext(DialogContext);
 
     useEffect(() => {
-        if (!isShowing)
+        if (!show.authDialog)
             setMode('login');
-    },[isShowing])
+    }, [show.authDialog])
 
-    if (isShowing)
+    if (show.authDialog)
         return (
-            <AuthDialogBackGround>
+            <AuthDialogBackGround >
                 <AuthDialogWrapper>
-                    <AuthDialogLogo onClick={close}>
+                    <AuthDialogLogo onClick={(e) => {
+                        e.preventDefault();
+                        setShow.setAuthDialog(false);
+                    }}>
                         <IoClose size={"35"}/>
                     </AuthDialogLogo>
                     <AuthDialogHeader>
@@ -35,14 +39,12 @@ const AuthDialog = ({isShowing, close}) => {
                     <AuthDialogContent>
                         {
                             mode === 'login' ?
-                                <SignIn setMode={setMode}>
-                                </SignIn>
+                                <SignIn setMode={setMode}
+                                />
                                 : mode === 'signup' ?
-                                <SignUp setMode={setMode}>
-                                </SignUp>
+                                <SignUp setMode={setMode}/>
                                 : mode === 'find' ?
-                                    <FindPw setMode={setMode}>
-                                    </FindPw>
+                                    <FindPw setMode={setMode}/>
                                     : null
                         }
                     </AuthDialogContent>
@@ -51,15 +53,6 @@ const AuthDialog = ({isShowing, close}) => {
         )
     else
         return null;
-}
-
-AuthDialog.propTypes = {
-    isShowing : PropTypes.bool,
-    close : PropTypes.func,
-}
-
-AuthDialog.defaultProps = {
-    isShowing: false,
 }
 
 export default AuthDialog;

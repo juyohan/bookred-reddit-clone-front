@@ -1,54 +1,61 @@
-import React, {useState} from 'react';
+import React, {useRef, useContext} from 'react';
 import {BsFillCaretDownFill} from "react-icons/all";
 // css
-import {HeaderAuthWrapper, Login, Logo, UserInfo, Username} from "./HeaderAuth.styles";
+import {AuthWrapper, HeaderAuthWrapper, Login, Logo, UserInfo, Username} from "./HeaderAuth.styles";
 // 컴포넌트
 import Token from "../../../JwtToken/Token";
 import AuthDialog from "../../Dialog/AuthDialog";
+// Context API
+import UserContext from "../../../Context/UserContext";
+import DialogContext from "../../../Context/DialogContext";
+import DialogSubMenu from "../../Dialog/AuthDialog/SubMenu";
 
 const HeaderAuth = () => {
-    const [isShowing, setIsShowing] = useState(false);
+    const [state, actions] = useContext(UserContext);
+    const [show, setShow] = useContext(DialogContext);
 
     const onOpenAuthDialog = (e) => {
         e.preventDefault();
-        setIsShowing(true);
+        setShow.setAuthDialog(true);
     }
 
-    const onCloseAuthDialog = (e) => {
+    const onOpenDialogSubMenu = (e) => {
         e.preventDefault();
-        if(isShowing)
-            setIsShowing(false);
+        if (show.dialogSubMenu)
+            setShow.setDialogSubMenu(false);
+        else
+            setShow.setDialogSubMenu(true);
     }
 
     return (
         <HeaderAuthWrapper>
             {
                 Token() ?
-                    <>
+                    <AuthWrapper>
                         <div>
                             이미지
                         </div>
 
-                        <UserInfo to={'/:username'}>
+                        <UserInfo to={`/${state.userInfo.username}`}>
                             <Username>
-                                username
+                                {state.userInfo.username}
                             </Username>
                         </UserInfo>
-                        <Logo to={'/sub/menu'}>
+                        {/* 서브 메뉴 열기 */}
+                        <Logo onClick={onOpenDialogSubMenu}>
                             <BsFillCaretDownFill/>
                         </Logo>
-                    </> :
+                    </AuthWrapper>
+                    :
                     <Login onClick={onOpenAuthDialog}>
                         로그인
                     </Login>
             }
-            <AuthDialog isShowing={isShowing}
-                        close={onCloseAuthDialog}
-            />
+            <DialogSubMenu/>
+            <AuthDialog/>
         </HeaderAuthWrapper>
     );
 }
-
 
 
 export default HeaderAuth;

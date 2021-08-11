@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useContext} from 'react';
 // css
 import {AuthButton, AuthTitle} from "../AuthDialog.styles";
 // 컴포넌트
@@ -11,15 +11,33 @@ import useToastStatus from "../../../../CustomHooks/useToastStatus";
 // Axios
 import {AuthorAPI} from "../../../../AxiosAPI";
 // 커스텀 함수
-import {SignUpToBack} from "../AuthDialogFunc/SignUpFunc";
+import {SignUpCheckInput, SignUpToBack} from "../AuthDialogFunc/SignUpFunc";
+import {useCheckValidateAndExist} from "../../../../CustomHooks/useCheckValidateAndExist";
+import UserContext from "../../../../Context/UserContext";
+import AuthLoading from "../../../Loading/AuthLoading/AuthLoading";
+import DialogContext from "../../../../Context/DialogContext";
 
 const SignUp = ({setMode}) => {
-    const [data, onChange, reset, validate] = useInput({
+    const [data, onChange, reset] = useInput({
         email: '',
         nickname: '',
         pw: '',
         pwConfirm: ''
     });
+
+    const [{
+        emailErrorMessage, nicknameErrorMessage, pwErrorMessage, pwConfirmErrorMessage
+        , emailStatus, nicknameStatus
+    }] = useCheckValidateAndExist({
+        emailErrorMessage: '',
+        nicknameErrorMessage: '',
+        pwErrorMessage: '',
+        pwConfirmErrorMessage: '',
+
+        emailStatus: null,
+        nicknameStatus: null
+    }, data);
+    const [state, actions] = useContext(UserContext);
 
     const {email, nickname, pw, pwConfirm} = data;
     const [isShowing, setIsShowing] = useToastStatus(false);
@@ -28,17 +46,19 @@ const SignUp = ({setMode}) => {
     const onSignUp = (e) => {
         e.preventDefault();
 
-        setToastMessage(SignUpToBack(data, validate, setIsShowing));
-        if (toastMessage === null)
+        // setToastMessage(SignUpToBack(data, setIsShowing, ));
+        const check = SignUpToBack(data, setIsShowing, setToastMessage);
+        if (check === true) {
+            actions.setIsLoading(true);
             AuthorAPI.signUp({email, nickname, pw})
                 .then(res => {
                     if (res.status === 200) {
+                        actions.setIsLoading(false);
                         setMode('login');
                         reset();
                     }
                 });
-        else
-            return null;
+        }
     }
 
     return (
@@ -52,9 +72,7 @@ const SignUp = ({setMode}) => {
                             onChange={onChange}
                             placeholder={"이메일"}
             />
-            {
-
-            }
+            {SignUpCheckInput(emailErrorMessage, emailStatus)}
 
             <InputWithLabel label={"닉네임"}
                             name={"nickname"}
@@ -63,9 +81,7 @@ const SignUp = ({setMode}) => {
                             placeholder={"닉네임 (10자 이하)"}
                             maxLength={10}
             />
-            {
-
-            }
+            {SignUpCheckInput(nicknameErrorMessage, nicknameStatus)}
 
             <InputWithLabel label={"비밀번호"}
                             name={"pw"}
@@ -75,9 +91,7 @@ const SignUp = ({setMode}) => {
                             placeholder={"비밀번호 (문자, 숫자, 특수문자 포함 8~15자)"}
                             maxLength={15}
             />
-            {
-
-            }
+            {SignUpCheckInput(pwErrorMessage)}
 
             <InputWithLabel label={"비밀번호 확인"}
                             name={"pwConfirm"}
@@ -87,15 +101,16 @@ const SignUp = ({setMode}) => {
                             placeholder={"비밀번호 확인"}
                             maxLength={15}
             />
+            {SignUpCheckInput(pwConfirmErrorMessage)}
+
             {
-
+                state.isLoading ? <AuthLoading/> :
+                    <AuthButton onClick={onSignUp}
+                                type={"button"}
+                    >
+                        회원가입
+                    </AuthButton>
             }
-
-            <AuthButton onClick={onSignUp}
-                        type={"button"}
-            >
-                회원가입
-            </AuthButton>
             <AuthHandler to={'/login'}
                          setMode={setMode}
                          name={'login'}
