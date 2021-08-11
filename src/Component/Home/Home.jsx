@@ -1,13 +1,16 @@
 import React from 'react';
-import {HomeWrapper} from "./Home.styles";
-import Header from "../Header";
+import {Content, HomeWrapper} from "./Home.styles";
+import SideBar from "../SideBar";
+import Feed from "../Feed";
 
 const Home = () => {
-    // console.log("Home : " + useLocation().pathname);
 
     return (
         <HomeWrapper>
-            <Header/>
+            <Content>
+                <SideBar/>
+                <Feed/>
+            </Content>
         </HomeWrapper>
     );
 }

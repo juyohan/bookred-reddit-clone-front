@@ -1,5 +1,6 @@
-import React from 'react';
+import React, {useState, useContext} from 'react';
 import PropTypes from "prop-types";
+import {useHistory} from "react-router-dom";
 // css
 import {AuthHandlerWrapper, AuthTitle, AuthButton} from "../AuthDialog.styles";
 // Component
@@ -11,41 +12,56 @@ import useInput from "../../../../CustomHooks/useInput";
 import useToastStatus from "../../../../CustomHooks/useToastStatus";
 // Axios
 import {AuthorAPI} from "../../../../AxiosAPI";
+// error
+import {
+    AUTH_SIGNIN_NO_USER,
+} from "../../../../Helper/ErrorMessageList";
+// Function
+import {SignInCheckBlank} from "../AuthDialogFunc/SignInFunc";
+import UserContext from "../../../../Context/UserContext";
+import DialogContext from "../../../../Context/DialogContext";
+
 
 const SignIn = ({setMode}) => {
     const [{email, pw}, onChange, reset] = useInput({
-        email : '',
-        pw : ''
-    },'login');
+        email: '',
+        pw: ''
+    });
 
     const [isShowing, setIsShowing] = useToastStatus(false);
+    const [toastMessage, setToastMessage] = useState(null);
+    const history = useHistory();
+    const [state, actions] = useContext(UserContext);
+    const [show, setShow] = useContext(DialogContext);
 
     const onLogin = (e) => {
         e.preventDefault();
 
-        if (!pw && !email)
-            setIsShowing(true);
-        else if (!email)
-            setIsShowing(true);
-        else if (!pw)
-            setIsShowing(true);
-        else {
+        // 토스트 메시지 출력
+        const check = SignInCheckBlank(email, pw, setIsShowing, setToastMessage);
+
+        if (check)
             AuthorAPI.login(email, pw)
                 .then(res => {
                     if (res.status === 200) {
-                        const {jwtToken, username} = res.data;
+                        const {username} = res.data;
+                        // context에 username을 저장
+                        actions.setUserInfo({
+                            username : username
+                        });
                         // 토큰 저장
-                        localStorage.setItem("Access_Token", jwtToken);
+                        localStorage.setItem("Access_Token", res.headers.authorization);
                         // 초기화
                         reset();
+                        // Dialog 닫기
+                        setShow.setAuthDialog(false);
+                        // 홈으로 이동
+                        history.push('/');
                     }
                 }).catch(err => {
-                    if (err.response.status === 401)
-                        console.log("이메일이나 패스워드 틀림");
-                    else if (err.response.status === 403)
-                        console.log("아예 없음");
+                setIsShowing(true);
+                setToastMessage(AUTH_SIGNIN_NO_USER);
             });
-        }
     }
 
     return (
@@ -89,7 +105,7 @@ const SignIn = ({setMode}) => {
                     비밀번호 찾기
                 </AuthHandler>
             </AuthHandlerWrapper>
-            {isShowing && <ToastModal message={"sdfsdf"}
+            {isShowing && <ToastModal message={toastMessage}
                                       isShowing={isShowing}
             />}
         </>

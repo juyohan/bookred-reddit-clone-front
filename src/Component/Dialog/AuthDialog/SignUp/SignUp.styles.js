@@ -21,4 +21,8 @@ export const MessageDiv = styled.div`
     padding-top: 2px;
     padding-bottom: 2px;
   `}
+  
+  ${props => props.status && css`
+    color : dodgerblue;
+  `}
 `;

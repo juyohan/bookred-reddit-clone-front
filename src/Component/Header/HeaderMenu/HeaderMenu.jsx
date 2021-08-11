@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 // css
 import {MenuItems} from "./HeaderMenu.styles";
 // 컴포넌트
-import SingleItem from "./SingleItem";
+import HeaderSingleItem from "./HeaderSingleItem";
 
 const menuList = [
     {
@@ -20,12 +20,13 @@ const menuList = [
     }
 ];
 
-const HeaderMenu = ({ activeMenu }) => (<MenuItems>
+const HeaderMenu = ({ activeMenu }) => (
+    <MenuItems>
         {
             menuList.map(item => (
-                <SingleItem key={`HeaderMenu_${item.id}`}
-                            active={activeMenu === item.id}
-                            item={item}
+                <HeaderSingleItem key={`HeaderMenu_${item.id}`}
+                                  active={activeMenu === item.id}
+                                  item={item}
                 />
             ))
         }

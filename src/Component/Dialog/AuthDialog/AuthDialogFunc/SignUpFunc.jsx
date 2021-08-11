@@ -3,42 +3,50 @@ import {
     AUTH_SIGNUP_EMAIL_ERROR,
     AUTH_SIGNUP_NICKNAME_ERROR, AUTH_SIGNUP_PASSWORD_ERROR
 } from "../../../../Helper/ErrorMessageList";
+import {MessageDiv} from "../SignUp/SignUp.styles";
+import {isEmail, isNickname, isPw} from "../../../../Helper/Regix";
 
-const ErrorStatus = (status) => {
-
-
-}
-
-export const SignUpToBack = (data, validate, setIsShowing) => {
+export const SignUpToBack = (data, setIsShowing, setToastMessage) => {
     const {email, nickname, pw, pwConfirm} = data;
-    const {emailValidate, nicknameValidate, pwValidate} = validate;
 
     // 한칸이라도 빈칸이 존재할 때
-    if(!email && !nickname && !pw && !pwConfirm) {
+    if (!email || !nickname || !pw || !pwConfirm) {
         setIsShowing(true);
-        return AUTH_BLANK_ERROR;
+        setToastMessage(AUTH_BLANK_ERROR);
+        return ;
     }
     // 각 칸별로 유효성 체크
-    else if (emailValidate === false) {
+    else if (isEmail(email) === false) {
         setIsShowing(true);
-        return AUTH_SIGNUP_EMAIL_ERROR
-    }
-    else if (nicknameValidate === false) {
+        setToastMessage(AUTH_SIGNUP_EMAIL_ERROR);
+        return ;
+    } else if (isNickname(nickname) === false) {
         setIsShowing(true);
-        return AUTH_SIGNUP_NICKNAME_ERROR
-    }
-    else if (pwValidate === false) {
+        setToastMessage(AUTH_SIGNUP_NICKNAME_ERROR);
+        return ;
+    } else if (isPw(pw) === false) {
         setIsShowing(true);
-        return AUTH_SIGNUP_PASSWORD_ERROR
-    }
-    else if (pw !== pwConfirm) {
+        setToastMessage(AUTH_SIGNUP_PASSWORD_ERROR);
+        return ;
+    } else if (pw !== pwConfirm) {
         setIsShowing(true);
-        return AUTH_SIGNUP_CONFIRM_PASSWORD_ERROR
+        setToastMessage(AUTH_SIGNUP_CONFIRM_PASSWORD_ERROR);
+        return ;
     }
 
     return true;
 }
 
-export const SignUpCheckInput = () => {
-
+export const SignUpCheckInput = (message, status) => {
+    if (message) {
+        if (status)
+            return <MessageDiv divAnimation status>
+                {message}
+            </MessageDiv>
+        else
+            return <MessageDiv divAnimation >
+                {message}
+            </MessageDiv>
+    } else
+        return <MessageDiv/>
 }
