@@ -19,8 +19,6 @@ const Routers = () => {
         });
     }, [pathname]);
 
-    localStorage.setItem('Access_Token' , 'sdfsdf');
-
     return (
         <>
             <Header/>
@@ -28,6 +26,9 @@ const Routers = () => {
                 {/* 홈 화면 */}
                 <Route exact path={['/', '/hot']} render={props => <Home {...props}/>}/>
                 <Route exact path={'/new'} render={props => <Home {...props}/>}/>
+                <Route exact path={'/rising'} render={props => <Home {...props}/>}/>
+                <Route exact path={'/top'} render={props => <Home {...props}/>}/>
+
                 <PrivateRoute path={'/group'}
                               render={props =>
                                   <Home {...props}

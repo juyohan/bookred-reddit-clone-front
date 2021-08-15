@@ -1,28 +1,21 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {FeedBarTitle, FeedBarWrapper} from "./FeedBar.styles";
 import {AiOutlineSwapLeft} from "react-icons/all";
-import GlobalContext from "../../../Context/GlobalContext";
+import PropTypes from "prop-types";
 
-const preTitle = (title) => {
-    if (title === '/') {
-        return 'Hot';
-    }
-    else {
-        return title.split('/')[1];
-    }
-}
-
-const FeedBar = () => {
-    const [{pathParams, router}, setPath] = useContext(GlobalContext);
-
+const FeedBar = ({params}) => {
     return (
         <FeedBarWrapper>
             <AiOutlineSwapLeft size={30}/>
             <FeedBarTitle>
-                {preTitle(router.currentPath)}
+                {params}
             </FeedBarTitle>
         </FeedBarWrapper>
     )
+}
+
+FeedBar.propTypes = {
+    params : PropTypes.string.isRequired
 }
 
 export default FeedBar;

@@ -5,17 +5,17 @@ import {AuthButton, AuthTitle} from "../AuthDialog.styles";
 import InputWithLabel from "../InputWithLabel";
 import AuthHandler from "../AuthHandler";
 import ToastModal from "../../../Modal/ToastModal";
+import AuthLoading from "../../../Loading/AuthLoading/AuthLoading";
 // 커스텀 훅
 import useInput from "../../../../CustomHooks/useInput";
 import useToastStatus from "../../../../CustomHooks/useToastStatus";
+import {useCheckValidateAndExist} from "../../../../CustomHooks/useCheckValidateAndExist";
 // Axios
 import {AuthorAPI} from "../../../../AxiosAPI";
 // 커스텀 함수
 import {SignUpCheckInput, SignUpToBack} from "../AuthDialogFunc/SignUpFunc";
-import {useCheckValidateAndExist} from "../../../../CustomHooks/useCheckValidateAndExist";
+// Context
 import UserContext from "../../../../Context/UserContext";
-import AuthLoading from "../../../Loading/AuthLoading/AuthLoading";
-import DialogContext from "../../../../Context/DialogContext";
 
 const SignUp = ({setMode}) => {
     const [data, onChange, reset] = useInput({
@@ -102,7 +102,7 @@ const SignUp = ({setMode}) => {
                             maxLength={15}
             />
             {SignUpCheckInput(pwConfirmErrorMessage)}
-
+            {/* 로딩 스피닝 */}
             {
                 state.isLoading ? <AuthLoading/> :
                     <AuthButton onClick={onSignUp}

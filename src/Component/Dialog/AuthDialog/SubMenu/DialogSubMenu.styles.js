@@ -2,7 +2,7 @@ import styled, {css} from "styled-components";
 import {Link} from "react-router-dom";
 
 export const SubMenuWrapper = styled.div`
-    position: fixed;
+  position: fixed;
   display: flex;
   top: 43.5px;
   right: 0.1rem;
@@ -18,7 +18,7 @@ export const SubMenuWrapper = styled.div`
 export const SubMenuDiv = styled(Link)`
   text-decoration: none;
   color: black;
-    height: 40px;
+  height: 40px;
   width: 100%;
   padding-left: 50px;
   display: flex;
@@ -29,25 +29,25 @@ export const SubMenuDiv = styled(Link)`
   white-space: nowrap;
   overflow: hidden;
   cursor: pointer;
-  
-  ${props => props.icon && css `
-    color : lightgray;
+
+  ${props => props.icon && css`
+    color: lightgray;
     padding-left: 20px;
   `}
-
   &:hover {
     background: lightgray;
-    color : black;
+    color: black;
   }
+
   &:active {
     background: darkgray;
   }
-  
+
   & > svg {
     margin-right: 10px;
   }
-  
-  ${props => props.disabled && css `
+
+  ${props => props.disabled && css`
     pointer-events: none;
   `}
 `
