@@ -30,7 +30,7 @@
 
 ## 📄 프로젝트 기술
 
-#### 컴포넌트 스타일링 (Styled-Components)
+### 컴포넌트 스타일링 (Styled-Components)
 - 여러가지의 컴포넌트 스타일링들 중에서 `SCSS`와 `Styled-Components` 중에서 고민을 했습니다.
 - `SCSS`와 비교해 `Styled-Components`는 `id`를 사용해 관리가 되는 것이 아닌, 각 태그별로 관리를 할 수 있어 가독성이 높다고 생각했습니다.
 - Front를 제대로 해보지 않은 사람으로써, JS안에서 css를 구성할 수 있다는 이야기가 너무 매력적으로 다가와서 `SCSS`보단 `Styled-Components`가 더 이끌렸습니다.
