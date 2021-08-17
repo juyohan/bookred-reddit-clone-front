@@ -21,6 +21,7 @@
   - *react-loader-spinner*
   - *axios*
   - *styled-component*  
+  - *prop-types*
 </br>
 
 ## 📀 프로젝트 배포       
