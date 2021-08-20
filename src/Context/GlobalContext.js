@@ -4,18 +4,14 @@ export const GlobalContext = createContext({
     state: {
         pageParams: {},
         router: {
-            currentPath: '/',
-            prevPath: '/',
+            currentPath : {},
+            prevPath : {}
         }
     },
     actions: {
         setPageParams: () => {
         },
-        setRouter: {
-            setCurrentPath: () => {
-            },
-            setPrevPath: () => {
-            },
+        setRouter: () => {
         }
     }
 });

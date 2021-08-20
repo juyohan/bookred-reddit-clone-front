@@ -7,5 +7,12 @@ export const FeedData = {
             url : `/api/feed/${params}`,
             method : "GET"
         })
+    },
+    getFeedDateAndUser : async  function(params) {
+        return await axiosPrivateInstance.request({
+            url : `/api/feed/${params}`,
+            method : "GET"
+        })
     }
+
 }

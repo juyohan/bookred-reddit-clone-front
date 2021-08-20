@@ -6,6 +6,8 @@ import PrivateRoute from "./PrivateRoute";
 import Profile from "../Component/Profile";
 import GlobalContext from "../Context/GlobalContext";
 import Header from "../Component/Header";
+import Token from "../JwtToken/Token";
+import Post from "../Component/Post";
 
 const Routers = () => {
     // const [state, action] = useContext(UserContext);
@@ -13,10 +15,12 @@ const Routers = () => {
     const {pathname} = useLocation();
 
     useEffect(() => {
-        setPath.setRouter({
-            currentPath: pathname,
-            prevPath: path.router.currentPath
-        });
+        if (path.router.currentPath !== pathname) {
+            setPath.setRouter({
+                currentPath: pathname,
+                prevPath: path.router.currentPath
+            });
+        }
     }, [pathname]);
 
     return (
@@ -24,17 +28,14 @@ const Routers = () => {
             <Header/>
             <Switch>
                 {/* 홈 화면 */}
-                <Route exact path={['/', '/hot']} render={props => <Home {...props}/>}/>
+                <Route exact path={['/', '/hot','/home']} render={props => <Home {...props}/>}/>
                 <Route exact path={'/new'} render={props => <Home {...props}/>}/>
                 <Route exact path={'/rising'} render={props => <Home {...props}/>}/>
                 <Route exact path={'/top'} render={props => <Home {...props}/>}/>
+                {/* Header Menu */}
+                <Route exact path={'/group'} render={props => <Home {...props}/>}/>
+                <Route exact path={'/post'} render={props => <Post {...props}/>}/>
 
-                <PrivateRoute path={'/group'}
-                              render={props =>
-                                  <Home {...props}
-                                  />
-                              }
-                />
                 {/* 프로필 화면 */}
                 <PrivateRoute path={'/:username'}
                               render={props =>
