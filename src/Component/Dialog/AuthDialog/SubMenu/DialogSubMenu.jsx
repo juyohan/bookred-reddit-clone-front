@@ -6,24 +6,24 @@ import {IoIosContact, IoIosLogOut} from "react-icons/all";
 
 const subMenuList = [
     {
-        id : 'mystuff',
-        title : 'My Stuff',
-        icon : <IoIosContact size={20}/>,
-        submenu : [
+        id: 'mystuff',
+        title: 'My Stuff',
+        icon: <IoIosContact size={20}/>,
+        submenu: [
             {
-                id : 'profile',
-                title : 'Profile'
+                id: 'profile',
+                title: 'Profile'
             },
             {
-                id : 'setting',
-                title : 'User Setting'
+                id: 'setting',
+                title: 'User Setting'
             }
         ]
     },
     {
-        id : 'logout',
-        title : 'Log Out',
-        icon : <IoIosLogOut size={20}/>
+        id: 'logout',
+        title: 'Log Out',
+        icon: <IoIosLogOut size={20}/>
     }
 ]
 const DialogSubMenu = () => {
@@ -42,22 +42,23 @@ const DialogSubMenu = () => {
     });
 
     // 외부를 클릭했을 때, 창 닫는 함수
+    // 외부를 클릭했을 땐, 창이 잘 닫히지만, 해당 아이콘을 2번 클릭했을 땐, 닫히지 않음.
     const checkClick = (e) => {
         if (ref.current && !e.target.contains(ref.current))
-            setShow.setDialogSubMenu(false);
+                setShow.setDialogSubMenu(false);
     }
 
     if (show.dialogSubMenu)
         return (
             <SubMenuWrapper ref={ref}>
-                    {
-                        subMenuList.map(menu => (
-                            <DialogSubSingleItems menu={menu}
-                                                  submenu={menu.submenu}
-                                                  key={`DialogSub_${menu.id}`}
-                            />
-                        ))
-                    }
+                {
+                    subMenuList.map(menu => (
+                        <DialogSubSingleItems menu={menu}
+                                              submenu={menu.submenu}
+                                              key={`DialogSub_${menu.id}`}
+                        />
+                    ))
+                }
             </SubMenuWrapper>
         );
     else

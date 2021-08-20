@@ -32,11 +32,10 @@ const SideMenuList = [
 const SideBarMenu = () => {
     const [path, setPath] = useContext(GlobalContext);
     const {currentPath, prevPath} = path.router
-    let currentType = currentPath || prevPath;
 
-    if (currentPath === '/') {
-        currentType = '/hot'
-    }
+    let currentType = currentPath;
+    if (currentPath === '/')
+        currentType  = '/hot'
 
     return (
         <SideBarMenuWrapper>

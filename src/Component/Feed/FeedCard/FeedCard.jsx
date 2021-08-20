@@ -1,13 +1,23 @@
 import React from 'react';
-import {CardWrapper} from "./FeedCard.styles";
-import CardUser from "./CardUser";
+import PropTypes from "prop-types";
+import FeedCardItem from "./FeedCardItem";
 
-const FeedCard = () => {
+const FeedCard = ({feedsInfo}) => {
     return (
-        <CardWrapper>
-            <CardUser/>
-        </CardWrapper>
-    );
+        <>
+            {
+                Array.from(feedsInfo).map(feed => (
+                    <FeedCardItem key={`Feed_${feed.id}`}
+                                  feed={feed}
+                    />
+                ))
+            }
+        </>
+    )
+}
+
+FeedCard.propTypes = {
+    feedsInfo : PropTypes.object,
 }
 
 export default FeedCard;

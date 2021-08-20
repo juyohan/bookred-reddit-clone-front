@@ -2,13 +2,13 @@ import {createContext, useState} from 'react';
 
 const FeedContext = createContext({
     state : {
-        feedsInfo : [],
+        feedsInfo : {},
         fetching : false,
         error : false,
         model : {}
     },
     actions : {
-        setFeedsInfo : () => [],
+        setFeedsInfo : () => {},
         setFetching : () => {},
         setError : () => {},
         setModel : () => {}
@@ -16,7 +16,7 @@ const FeedContext = createContext({
 });
 
 const FeedProvider = ({children}) => {
-    const [feedsInfo, setFeedsInfo] = useState([]);
+    const [feedsInfo, setFeedsInfo] = useState({});
     const [fetching, setFetching] = useState(false);
     const [error, setError] = useState(false);
     const [model, setModel] = useState({});
