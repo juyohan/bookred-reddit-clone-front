@@ -30,23 +30,25 @@ const DialogSubMenu = () => {
     const [show, setShow] = useContext(DialogContext);
     const ref = useRef();
 
-    // 해당 모달 밖을 클릭했을 때, 실행되는 훅
-    useEffect(() => {
-        const click = () => {
-            window.addEventListener('mousedown', checkClick);
-        }
-        click();
-        return () => {
-            window.removeEventListener('mousedown', checkClick);
-        }
-    });
-
-    // 외부를 클릭했을 때, 창 닫는 함수
-    // 외부를 클릭했을 땐, 창이 잘 닫히지만, 해당 아이콘을 2번 클릭했을 땐, 닫히지 않음.
-    const checkClick = (e) => {
-        if (ref.current && !e.target.contains(ref.current))
-                setShow.setDialogSubMenu(false);
-    }
+    // // 해당 모달 밖을 클릭했을 때, 실행되는 훅
+    // useEffect(() => {
+    //     const click = () => {
+    //         window.addEventListener('mousedown', checkClick);
+    //     }
+    //     click();
+    //     return () => {
+    //         window.removeEventListener('mousedown', checkClick);
+    //     }
+    // });
+    //
+    // // 외부를 클릭했을 때, 창 닫는 함수
+    // // 외부를 클릭했을 땐, 창이 잘 닫히지만, 해당 아이콘을 2번 클릭했을 땐, 닫히지 않음.
+    // const checkClick = (e) => {
+    //     if (ref.current && !e.target.contains(ref.current))
+    //             setShow.setDialogSubMenu(false);
+    //     else
+    //         console.log("안");
+    // }
 
     if (show.dialogSubMenu)
         return (
