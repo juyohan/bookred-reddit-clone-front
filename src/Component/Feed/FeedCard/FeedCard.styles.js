@@ -1,10 +1,16 @@
 import styled from "styled-components";
 
 export const CardWrapper = styled.div`
-    margin-bottom: 10px;
+    display: flex;
+  margin-bottom: 10px;
+  flex-direction: row;
+  border-radius: 5px;
+  background-color: white;
+`
+
+export const CardContentWrapper = styled.div`
   overflow: hidden;
   cursor: pointer;
-  display: flex;
   width: 100%;
-  background-color: #282c34;
+  flex-direction: column;
 `

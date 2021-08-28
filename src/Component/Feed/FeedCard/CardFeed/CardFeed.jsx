@@ -1,12 +1,21 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import {CardFeedDesc, CardFeedTitle, CardFeedWrapper} from "./CardFeed.styles";
 
 const CardFeed = ({title, desc}) => {
     return (
-        <>
-            {title}
-            {desc}
-        </>
+        <CardFeedWrapper>
+            <CardFeedTitle>
+                <h3>
+                    {title}
+                </h3>
+            </CardFeedTitle>
+            <CardFeedDesc>
+                <p>
+                    {desc}
+                </p>
+            </CardFeedDesc>
+        </CardFeedWrapper>
     )
 }
 

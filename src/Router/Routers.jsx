@@ -6,11 +6,10 @@ import PrivateRoute from "./PrivateRoute";
 import Profile from "../Component/Profile";
 import GlobalContext from "../Context/GlobalContext";
 import Header from "../Component/Header";
-import Token from "../JwtToken/Token";
 import Post from "../Component/Post";
+import Token from "../JwtToken/Token";
 
 const Routers = () => {
-    // const [state, action] = useContext(UserContext);
     const [path, setPath] = useContext(GlobalContext);
     const {pathname} = useLocation();
 

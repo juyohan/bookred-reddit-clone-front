@@ -7,7 +7,9 @@ const Home = () => {
     return (
         <HomeWrapper>
             <Content>
+                {/* 사이드 바 */}
                 <SideBar/>
+                {/* 피드 */}
                 <Feed/>
             </Content>
         </HomeWrapper>
