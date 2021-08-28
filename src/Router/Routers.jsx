@@ -8,6 +8,7 @@ import GlobalContext from "../Context/GlobalContext";
 import Header from "../Component/Header";
 import Post from "../Component/Post";
 import Token from "../JwtToken/Token";
+import ConfirmUser from "../Component/Setting/ConfirmUser";
 
 const Routers = () => {
     const [path, setPath] = useContext(GlobalContext);
@@ -34,6 +35,7 @@ const Routers = () => {
                 {/* Header Menu */}
                 <Route exact path={'/group'} render={props => <Home {...props}/>}/>
                 <Route exact path={'/post'} render={props => <Post {...props}/>}/>
+                <Route exact path={'/setting'} render={props => <ConfirmUser {...props}/>}/>
 
                 {/* 프로필 화면 */}
                 <PrivateRoute path={'/:username'}

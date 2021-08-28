@@ -5,13 +5,14 @@ import DialogContext from "../../../../Context/DialogContext";
 import UserContext from "../../../../Context/UserContext";
 import {useHistory} from "react-router-dom";
 
-const DialogSubItem = ({item, disabled, type, onClick}) => {
+const DialogSubItem = ({item, disabled, type, onClickLogOut}) => {
+
     return (
         <SubMenuDiv to={`/${item.id}`}
                     disabled={disabled}
                     icon={item.icon}
                     type={`${type}`}
-                    onClick={onClick}
+                    onClick={onClickLogOut}
         >
             {item.icon}
             {item.title}
@@ -29,9 +30,10 @@ const DialogSubSingleItems = ({menu, submenu}) => {
     const [user, setUser] = useContext(UserContext);
     const history = useHistory();
 
-    const onClick = (e) => {
+    const onClickLogOut = (e) => {
         e.preventDefault();
 
+        alert("로그아웃이 되었습니다.");
         // 유저정보 초기화
         setUser.setUserInfo({});
         // jwt Token 삭제
@@ -61,7 +63,7 @@ const DialogSubSingleItems = ({menu, submenu}) => {
                     :
                     <DialogSubItem item={menu}
                                    type={'button'}
-                                   onClick={onClick}
+                                   onClickLogOut={onClickLogOut}
                     />
             }
         </>

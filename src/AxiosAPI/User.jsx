@@ -6,5 +6,15 @@ export const User = {
             url : '/api/user/get',
             method : 'GET'
         })
+    },
+
+    checkUserPw : async function(pw) {
+        return await axiosPrivateInstance.request({
+            url : `/api/user/checkPw`,
+            method : 'POST',
+            data : {
+                pw : pw
+            }
+        })
     }
 }

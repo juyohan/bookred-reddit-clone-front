@@ -6,11 +6,11 @@ export const CardWrapper = styled.div`
   flex-direction: row;
   border-radius: 5px;
   background-color: white;
+  cursor: pointer;
 `
 
 export const CardContentWrapper = styled.div`
   overflow: hidden;
-  cursor: pointer;
   width: 100%;
   flex-direction: column;
 `
