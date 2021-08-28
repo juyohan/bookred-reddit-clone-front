@@ -50,7 +50,7 @@ const SignIn = ({setMode}) => {
                             username : username
                         });
                         // 토큰 저장
-                        localStorage.setItem("Access_Token", res.headers.authorization);
+                        localStorage.setItem('Access_Token', res.headers.authorization);
                         // 초기화
                         reset();
                         // Dialog 닫기

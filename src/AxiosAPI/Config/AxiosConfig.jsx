@@ -1,8 +1,8 @@
 import axios from "axios";
+import Token from "../../JwtToken/Token";
 
 export const axiosPrivateInstance = axios.create({
     headers: {
-        "Authorization": "Bearer " + localStorage.getItem("Access_Token"),
         "Content-Type": 'application/json'
     },
     baseURL: 'http://localhost:8080'
