@@ -8,6 +8,7 @@ import {FeedAPI} from "../../../../AxiosAPI";
 import Token from "../../../../JwtToken/Token";
 // Context API
 import DialogContext from "../../../../Context/DialogContext";
+import {getCookie} from "../../../../JwtToken/Cookie";
 
 const CardLike = ({like, feedId, likeType}) => {
     const [vote, setVote] = useState(like);
@@ -15,7 +16,7 @@ const CardLike = ({like, feedId, likeType}) => {
     const [dialog, setDialog] = useContext(DialogContext);
 
     const onClickUpLike = (e) => {
-        if (Token())
+        if (getCookie('Access_Token'))
             likeApi("UPLIKE", feedId);
         else {
             e.preventDefault();
@@ -24,7 +25,7 @@ const CardLike = ({like, feedId, likeType}) => {
     }
 
     const onClickDownLike = (e) => {
-        if (Token())
+        if (getCookie('Access_Token'))
             likeApi("DOWNLIKE", feedId)
         else {
             e.preventDefault();

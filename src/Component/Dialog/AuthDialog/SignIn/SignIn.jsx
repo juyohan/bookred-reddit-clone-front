@@ -20,6 +20,8 @@ import {
 import {SignInCheckBlank} from "../AuthDialogFunc/SignInFunc";
 import UserContext from "../../../../Context/UserContext";
 import DialogContext from "../../../../Context/DialogContext";
+import {Cookies, useCookies} from "react-cookie";
+import {getCookie, setCookie} from "../../../../JwtToken/Cookie";
 
 
 const SignIn = ({setMode}) => {
@@ -44,13 +46,24 @@ const SignIn = ({setMode}) => {
             AuthorAPI.login(email, pw)
                 .then(res => {
                     if (res.status === 200) {
-                        const {username} = res.data;
-                        // context에 username을 저장
-                        actions.setUserInfo({
-                            username : username
+                        // 쿠키의 유효 기간 설정
+                        const expires = new Date();
+                        expires.setMinutes(expires.getMinutes() + 60);
+                        // 쿠키 생성
+                        // const [cookie] = useCookies(["Access_Token"]);
+                        setCookie("Access-Token", res.headers.authorization,{
+                            path : '/',
+                            expires : expires,
+                            secure : true
                         });
                         // 토큰 저장
-                        localStorage.setItem('Access_Token', res.headers.authorization);
+                        // localStorage.setItem('Access_Token', res.headers.authorization);
+                        // context에 저장
+                        // actions.setJwtToken(res.headers.authorization);
+                        // context에 user정보 저장
+                        actions.setUserInfo({
+                            username : res.data
+                        });
                         // 초기화
                         reset();
                         // Dialog 닫기

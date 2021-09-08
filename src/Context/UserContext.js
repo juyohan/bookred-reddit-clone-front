@@ -5,13 +5,15 @@ const UserContext = createContext({
         userInfo: {},
         isLoading : false,
         error : false,
-        isShowing : false
+        isShowing : false,
+        // jwtToken : null,
     },
     actions: {
         setUserInfo: () => {},
         setIsLoading : () => {},
         setError : () => {},
-        setIsShowing : () => {}
+        setIsShowing : () => {},
+        // setJwtToken : () => {},
     }
 });
 
@@ -20,6 +22,7 @@ const UserProvider = ({children}) => {
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(false);
     const [isShowing, setIsShowing] = useState(false);
+    // const [jwtToken, setJwtToken] = useState(null);
 
     const value = {
         state: {userInfo, isLoading, error, isShowing},

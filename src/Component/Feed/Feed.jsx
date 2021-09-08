@@ -10,6 +10,7 @@ import FeedContext from "../../Context/FeedContext";
 import GlobalContext from "../../Context/GlobalContext";
 // Axios
 import {FeedAPI} from "../../AxiosAPI";
+import {getCookie} from "../../JwtToken/Cookie";
 
 // '/hot' -> 'hot' 으로 변경
 const preTitle = (title) => {
@@ -40,7 +41,8 @@ const Feed = () => {
                 if (res.status === 200) {
                     setFetching(false);
                     setError(false);
-                    setFeedsInfo(res.data);
+                    setFeedsInfo(res.data.data);
+                    console.log(res.data.data);
                 }
             }).catch(err => {
                 setFetching(false);

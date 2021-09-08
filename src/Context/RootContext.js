@@ -9,7 +9,7 @@ export const RootProvider = ({children}) => {
             <FeedProvider>
                 <GlobalProvider>
                     <DialogProvider>
-                        {children}
+                            {children}
                     </DialogProvider>
                 </GlobalProvider>
             </FeedProvider>

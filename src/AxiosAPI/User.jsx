@@ -16,5 +16,6 @@ export const User = {
                 pw : pw
             }
         })
-    }
+    },
+
 }

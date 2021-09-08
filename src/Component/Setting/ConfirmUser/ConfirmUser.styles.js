@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ConfirmUserWrapper = styled.div`
   width: 100vw;
-  height: 100vw;
+  height: 100%;
   background-color: lightgray;
   display: flex;
   align-items: center;
