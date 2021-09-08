@@ -7,7 +7,7 @@ const FeedCard = ({feedsInfo}) => {
         <>
             {
                 Array.from(feedsInfo).map(feed => (
-                    <FeedCardItem key={`Feed_${feed.id}`}
+                    <FeedCardItem key={`Feed_${feed.feedId}`}
                                   feed={feed}
                     />
                 ))

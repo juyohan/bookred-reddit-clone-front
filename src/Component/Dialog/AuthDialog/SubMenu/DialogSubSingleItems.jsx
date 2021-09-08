@@ -4,6 +4,8 @@ import PropTypes from "prop-types";
 import DialogContext from "../../../../Context/DialogContext";
 import UserContext from "../../../../Context/UserContext";
 import {useHistory} from "react-router-dom";
+import {removeCookie} from "../../../../JwtToken/Cookie";
+import {AuthorAPI, UserAPI} from "../../../../AxiosAPI";
 
 const DialogSubItem = ({item, disabled, type, onClickLogOut}) => {
 
@@ -32,16 +34,22 @@ const DialogSubSingleItems = ({menu, submenu}) => {
 
     const onClickLogOut = (e) => {
         e.preventDefault();
-
-        alert("로그아웃이 되었습니다.");
-        // 유저정보 초기화
-        setUser.setUserInfo({});
-        // jwt Token 삭제
-        localStorage.clear();
-        // 서브메뉴 닫음
-        setDialog.setDialogSubMenu(false);
-        // 홈 화면으로
-        history.push('/');
+        // AuthorAPI.logout()
+        //     .then(res => {
+        //         if (res.status === 200) {
+                    alert("로그아웃이 되었습니다.");
+                    // 유저정보 초기화
+                    setUser.setUserInfo({});
+                    // 쿠키 삭제
+                    removeCookie("Access-Token");
+                    // 서브메뉴 닫음
+                    setDialog.setDialogSubMenu(false);
+                    // 홈 화면으로
+                    history.push('/');
+                // }
+        // }).catch(err => {
+        //     console.log(err);
+        // })
     }
 
     return (

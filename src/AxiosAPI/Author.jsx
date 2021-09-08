@@ -1,4 +1,4 @@
-import {axiosPublicInstance} from "./Config/AxiosConfig";
+import {axiosPrivateInstance, axiosPublicInstance} from "./Config/AxiosConfig";
 
 
 export const Author = {
@@ -45,5 +45,10 @@ export const Author = {
         })
     },
 
-
+    logout : async function() {
+        return await axiosPrivateInstance.request({
+            url : `/api/auth/logout`,
+            method : 'POST'
+        })
+    }
 }

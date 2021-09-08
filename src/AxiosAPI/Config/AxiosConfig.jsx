@@ -1,9 +1,10 @@
 import axios from "axios";
-import Token from "../../JwtToken/Token";
+import {getCookie} from "../../JwtToken/Cookie";
 
 export const axiosPrivateInstance = axios.create({
     headers: {
-        "Content-Type": 'application/json'
+        "Authorization" : 'Bearer ' + getCookie("Access-Token"),
+        "Content-Type": 'application/json',
     },
     baseURL: 'http://localhost:8080'
 
@@ -12,7 +13,8 @@ export const axiosPrivateInstance = axios.create({
 
 export const axiosPublicInstance = axios.create({
     headers: {
-        "Content-Type": 'application/json'
+        "Authorization" : 'Bearer ' + getCookie("Access-Token"),
+        "Content-Type": 'application/json',
     },
     baseURL: 'http://localhost:8080'
 });

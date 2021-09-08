@@ -9,6 +9,7 @@ import Header from "../Component/Header";
 import Post from "../Component/Post";
 import Token from "../JwtToken/Token";
 import ConfirmUser from "../Component/Setting/ConfirmUser";
+import {getCookie} from "../JwtToken/Cookie";
 
 const Routers = () => {
     const [path, setPath] = useContext(GlobalContext);
@@ -22,6 +23,8 @@ const Routers = () => {
             });
         }
     }, [pathname]);
+
+    console.log(getCookie("Access-Token"))
 
     return (
         <>

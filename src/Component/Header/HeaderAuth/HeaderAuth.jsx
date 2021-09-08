@@ -9,6 +9,7 @@ import AuthDialog from "../../Dialog/AuthDialog";
 import UserContext from "../../../Context/UserContext";
 import DialogContext from "../../../Context/DialogContext";
 import DialogSubMenu from "../../Dialog/AuthDialog/SubMenu";
+import {getCookie} from "../../../JwtToken/Cookie";
 
 const HeaderAuth = () => {
     const [state, actions] = useContext(UserContext);
@@ -30,7 +31,8 @@ const HeaderAuth = () => {
     return (
         <HeaderAuthWrapper>
             {
-                Token() ?
+                getCookie("Access-Token")
+                    ?
                     <AuthWrapper>
                         <div>
                             이미지
