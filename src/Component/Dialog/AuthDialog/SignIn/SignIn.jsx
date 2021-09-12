@@ -11,17 +11,18 @@ import AuthHandler from "../AuthHandler";
 import useInput from "../../../../CustomHooks/useInput";
 import useToastStatus from "../../../../CustomHooks/useToastStatus";
 // Axios
-import {AuthorAPI} from "../../../../AxiosAPI";
+import {API} from "../../../../AxiosAPI";
 // error
 import {
     AUTH_SIGNIN_NO_USER,
 } from "../../../../Helper/ErrorMessageList";
 // Function
 import {SignInCheckBlank} from "../AuthDialogFunc/SignInFunc";
+// Context API
 import UserContext from "../../../../Context/UserContext";
 import DialogContext from "../../../../Context/DialogContext";
-import {Cookies, useCookies} from "react-cookie";
-import {getCookie, setCookie} from "../../../../JwtToken/Cookie";
+// Cookie
+import {setCookie} from "../../../../JwtToken/Cookie";
 
 
 const SignIn = ({setMode}) => {
@@ -37,13 +38,13 @@ const SignIn = ({setMode}) => {
     const [show, setShow] = useContext(DialogContext);
 
     const onLogin = (e) => {
-        e.preventDefault();
+        // e.preventDefault();
 
         // 토스트 메시지 출력
         const check = SignInCheckBlank(email, pw, setIsShowing, setToastMessage);
 
         if (check)
-            AuthorAPI.login(email, pw)
+            API.Author.login(email, pw)
                 .then(res => {
                     if (res.status === 200) {
                         // 쿠키의 유효 기간 설정
@@ -54,7 +55,7 @@ const SignIn = ({setMode}) => {
                         setCookie("Access-Token", res.headers.authorization,{
                             path : '/',
                             expires : expires,
-                            secure : true
+                            secure : true,
                         });
                         // 토큰 저장
                         // localStorage.setItem('Access_Token', res.headers.authorization);
@@ -64,7 +65,7 @@ const SignIn = ({setMode}) => {
                         actions.setUserInfo({
                             username : res.data
                         });
-                        // 초기화
+                        // Label 초기화
                         reset();
                         // Dialog 닫기
                         setShow.setAuthDialog(false);

@@ -1,5 +1,7 @@
+import React, {useContext} from "react";
+// css
 import {FeedDialogWrapper} from "./FeedDialog.styles";
-import {useContext} from "react";
+// Context API
 import DialogContext from "../../../Context/DialogContext";
 
 const FeedDialog = () => {

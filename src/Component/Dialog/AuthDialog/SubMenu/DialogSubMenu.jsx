@@ -1,7 +1,11 @@
-import React, {useContext, useEffect, useRef} from 'react';
+import React, {useContext, useRef} from 'react';
+// Context API
 import DialogContext from "../../../../Context/DialogContext";
+// css
 import {SubMenuWrapper} from "./DialogSubMenu.styles";
+// Component
 import DialogSubSingleItems from "./DialogSubSingleItems";
+// Icon
 import {IoIosContact, IoIosLogOut} from "react-icons/all";
 
 const subMenuList = [

@@ -3,10 +3,10 @@ import {useHistory} from "react-router-dom";
 import PropTypes from 'prop-types';
 // css
 import {Item} from "./HeaderMenu.styles";
-// JWT
-import Token from "../../../JwtToken/Token";
 // Context API
 import DialogContext from "../../../Context/DialogContext";
+// Cookie
+import {getCookie} from "../../../JwtToken/Cookie";
 
 const HeaderSingleItem = ({item, active, setActive}) => {
     const [dialog, setDialog] = useContext(DialogContext);
@@ -22,7 +22,7 @@ const HeaderSingleItem = ({item, active, setActive}) => {
             history.push('/');
         }
         // 토큰이 없으면 렌더링 멈추고 로그인 창 띄우기
-        else if (!Token()) {
+        else if (!getCookie('Access-Token')) {
             e.preventDefault();
             setDialog.setAuthDialog(true);
         }

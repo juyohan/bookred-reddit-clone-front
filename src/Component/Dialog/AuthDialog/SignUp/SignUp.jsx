@@ -11,7 +11,7 @@ import useInput from "../../../../CustomHooks/useInput";
 import useToastStatus from "../../../../CustomHooks/useToastStatus";
 import {useCheckValidateAndExist} from "../../../../CustomHooks/useCheckValidateAndExist";
 // Axios
-import {AuthorAPI} from "../../../../AxiosAPI";
+import {API} from "../../../../AxiosAPI";
 // 커스텀 함수
 import {SignUpCheckInput, SignUpToBack} from "../AuthDialogFunc/SignUpFunc";
 // Context
@@ -50,7 +50,7 @@ const SignUp = ({setMode}) => {
         const check = SignUpToBack(data, setIsShowing, setToastMessage);
         if (check === true) {
             actions.setIsLoading(true);
-            AuthorAPI.signUp({email, nickname, pw})
+            API.Author.signUp({email, nickname, pw})
                 .then(res => {
                     if (res.status === 200) {
                         actions.setIsLoading(false);

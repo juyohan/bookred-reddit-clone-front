@@ -1,14 +1,14 @@
-import React, {useRef, useContext} from 'react';
+import React, {useContext} from 'react';
 import {BsFillCaretDownFill} from "react-icons/all";
 // css
 import {AuthWrapper, HeaderAuthWrapper, Login, Logo, UserInfo, Username} from "./HeaderAuth.styles";
 // 컴포넌트
-import Token from "../../../JwtToken/Token";
 import AuthDialog from "../../Dialog/AuthDialog";
+import DialogSubMenu from "../../Dialog/AuthDialog/SubMenu";
 // Context API
 import UserContext from "../../../Context/UserContext";
 import DialogContext from "../../../Context/DialogContext";
-import DialogSubMenu from "../../Dialog/AuthDialog/SubMenu";
+// Cookie
 import {getCookie} from "../../../JwtToken/Cookie";
 
 const HeaderAuth = () => {

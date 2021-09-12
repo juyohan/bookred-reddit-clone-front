@@ -9,8 +9,7 @@ import FeedLoading from "../Loading/FeedLoading";
 import FeedContext from "../../Context/FeedContext";
 import GlobalContext from "../../Context/GlobalContext";
 // Axios
-import {FeedAPI} from "../../AxiosAPI";
-import {getCookie} from "../../JwtToken/Cookie";
+import {API} from "../../AxiosAPI";
 
 // '/hot' -> 'hot' 으로 변경
 const preTitle = (title) => {
@@ -37,12 +36,11 @@ const Feed = () => {
         if (feedParams.includes(params)) {
             setFetching(true);
 
-            FeedAPI.getFeedData(params).then(res => {
+            API.FeedData.getFeedData(params).then(res => {
                 if (res.status === 200) {
                     setFetching(false);
                     setError(false);
                     setFeedsInfo(res.data.data);
-                    console.log(res.data.data);
                 }
             }).catch(err => {
                 setFetching(false);

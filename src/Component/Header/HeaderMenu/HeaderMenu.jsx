@@ -1,10 +1,8 @@
 import React, {useState} from 'react';
-import PropTypes from "prop-types";
 // css
 import {MenuItems} from "./HeaderMenu.styles";
 // 컴포넌트
 import HeaderSingleItem from "./HeaderSingleItem";
-import {useLocation} from "react-router-dom";
 
 const menuList = [
     {

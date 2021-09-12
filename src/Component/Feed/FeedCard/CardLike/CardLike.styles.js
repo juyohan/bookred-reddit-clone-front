@@ -1,5 +1,5 @@
-import styled, {css} from "styled-components";
-import {BsCaretDownFill, BsCaretUp, BsCaretUpFill} from "react-icons/all";
+import styled from "styled-components";
+import {BsCaretDownFill, BsCaretUpFill} from "react-icons/all";
 
 export const CardLikeWrapper = styled.div`
     display: flex;
