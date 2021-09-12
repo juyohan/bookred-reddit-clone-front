@@ -1,15 +1,15 @@
 import React, {useContext, useEffect} from 'react';
-import {Redirect, Route, Switch, useLocation} from "react-router-dom";
-import Home from "../Component/Home";
+import {Route, Switch, useLocation} from "react-router-dom";
+// Custom Router
 import PrivateRoute from "./PrivateRoute";
-// import UserContext from "../Context/UserContext";
+// Component
+import Home from "../Component/Home";
 import Profile from "../Component/Profile";
-import GlobalContext from "../Context/GlobalContext";
 import Header from "../Component/Header";
 import Post from "../Component/Post";
-import Token from "../JwtToken/Token";
 import ConfirmUser from "../Component/Setting/ConfirmUser";
-import {getCookie} from "../JwtToken/Cookie";
+// Context API
+import GlobalContext from "../Context/GlobalContext";
 
 const Routers = () => {
     const [path, setPath] = useContext(GlobalContext);
@@ -24,8 +24,6 @@ const Routers = () => {
         }
     }, [pathname]);
 
-    console.log(getCookie("Access-Token"))
-
     return (
         <>
             <Header/>
@@ -35,6 +33,7 @@ const Routers = () => {
                 <Route exact path={'/new'} render={props => <Home {...props}/>}/>
                 <Route exact path={'/rising'} render={props => <Home {...props}/>}/>
                 <Route exact path={'/top'} render={props => <Home {...props}/>}/>
+
                 {/* Header Menu */}
                 <Route exact path={'/group'} render={props => <Home {...props}/>}/>
                 <Route exact path={'/post'} render={props => <Post {...props}/>}/>

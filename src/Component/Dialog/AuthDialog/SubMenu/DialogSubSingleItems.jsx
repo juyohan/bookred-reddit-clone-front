@@ -1,11 +1,13 @@
 import React, {useContext} from 'react';
-import {SubMenuDiv} from "./DialogSubMenu.styles";
 import PropTypes from "prop-types";
+import {useHistory} from "react-router-dom";
+// css
+import {SubMenuDiv} from "./DialogSubMenu.styles";
+// Context API
 import DialogContext from "../../../../Context/DialogContext";
 import UserContext from "../../../../Context/UserContext";
-import {useHistory} from "react-router-dom";
+// Cookie
 import {removeCookie} from "../../../../JwtToken/Cookie";
-import {AuthorAPI, UserAPI} from "../../../../AxiosAPI";
 
 const DialogSubItem = ({item, disabled, type, onClickLogOut}) => {
 

@@ -1,9 +1,9 @@
-import {Author as AuthorAPI} from './Author';
-import {User as UserAPI} from './User';
-import {FeedData as FeedAPI} from "./FeedData";
+import {Author} from './Author';
+import {User} from './User';
+import {FeedData} from "./FeedData";
 
-export {
-    AuthorAPI,
-    UserAPI,
-    FeedAPI
+export const API = {
+    Author,
+    User,
+    FeedData
 }

@@ -10,7 +10,7 @@ import {
     AUTH_SIGNUP_NICKNAME_ERROR, AUTH_SIGNUP_NICKNAME_EXIST, AUTH_SIGNUP_PASSWORD_ERROR
 } from "../Helper/ErrorMessageList";
 // Axios
-import {AuthorAPI} from "../AxiosAPI";
+import {API} from "../AxiosAPI";
 
 function reducer(state, action) {
     switch (action.type) {
@@ -83,7 +83,7 @@ export const useCheckValidateAndExist = (initial, data) => {
     useEffect(() => {
         if (email.length > 0)
             if (isEmail(email)) {
-                AuthorAPI.checkEmail(email)
+                API.Author.checkEmail(email)
                     .then(res => {
                         if (res.status === 200) {
                             dispatch({
@@ -108,7 +108,7 @@ export const useCheckValidateAndExist = (initial, data) => {
     useEffect(() => {
         if (nickname.length > 0)
             if (isNickname(nickname)) {
-                AuthorAPI.checkNickname(nickname)
+                API.Author.checkNickname(nickname)
                     .then(res => {
                         if (res.status === 200) {
                             dispatch({

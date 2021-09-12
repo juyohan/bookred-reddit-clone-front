@@ -1,9 +1,11 @@
 import React, {useContext, useEffect} from 'react';
 import {Route, Redirect} from "react-router-dom";
-import Token from "../JwtToken/Token";
+// Component
 import AuthDialog from "../Component/Dialog/AuthDialog";
+// Context API
 import GlobalContext from "../Context/GlobalContext";
 import DialogContext from "../Context/DialogContext";
+// Cookie
 import {getCookie} from "../JwtToken/Cookie";
 
 const PrivateRoute = ({component: Component, render, ...rest}) => {

@@ -4,6 +4,7 @@ import {SideBarMenuWrapper} from "./SideBarMenu.styles";
 import {AiOutlineRise, BiNews, FaTrophy, MdWhatshot} from "react-icons/all";
 // component
 import SideMenuSingleItem from "./SideMenuSingleItem";
+// Context API
 import GlobalContext from "../../../Context/GlobalContext";
 
 const SideMenuList = [

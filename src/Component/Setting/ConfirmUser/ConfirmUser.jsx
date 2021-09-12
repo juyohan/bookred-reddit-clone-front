@@ -1,13 +1,17 @@
+import React, {useContext} from "react";
+import PropTypes from "prop-types";
+// css
 import {
     ConfirmUserButton,
     ConfirmUserInputPw,
     ConfirmUserTitle,
     ConfirmUserWrapper,
 } from "./ConfirmUser.styles";
+// Custom Hooks
 import useInput from "../../../CustomHooks/useInput";
-import {UserAPI} from "../../../AxiosAPI";
-import PropTypes from "prop-types";
-import {useContext} from "react";
+// Axios
+import {API} from "../../../AxiosAPI";
+// Context API
 import UserContext from "../../../Context/UserContext";
 
 const ConfirmUser = ({setCheck}) => {
@@ -17,7 +21,7 @@ const ConfirmUser = ({setCheck}) => {
     });
 
     const onClickConfirmPw = () => {
-        UserAPI.checkUserPw(pw)
+        API.User.checkUserPw(pw)
             .then(res => {
                 if (res.status === 200) {
                     setCheck(true)

@@ -3,11 +3,10 @@ import PropTypes from "prop-types";
 // css
 import {CardLikeWrapper, DownLikeIcon, LikeCount, UpLikeIcon} from "./CardLike.styles";
 // Axios API
-import {FeedAPI} from "../../../../AxiosAPI";
-// token
-import Token from "../../../../JwtToken/Token";
+import {API} from "../../../../AxiosAPI";
 // Context API
 import DialogContext from "../../../../Context/DialogContext";
+// Cookie
 import {getCookie} from "../../../../JwtToken/Cookie";
 
 const CardLike = ({like, feedId, likeType}) => {
@@ -35,7 +34,7 @@ const CardLike = ({like, feedId, likeType}) => {
 
     // Api 통신
     const likeApi = (type, id) => {
-        FeedAPI.postLike(type, id)
+        API.FeedData.postLike(type, id)
             .then(res => {
                 setVote(res.data);
                 checkButton(type);

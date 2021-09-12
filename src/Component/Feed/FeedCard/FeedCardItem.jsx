@@ -12,6 +12,7 @@ import DialogContext from "../../../Context/DialogContext";
 import FeedDialog from "../../Dialog/FeedDialog";
 
 const FeedCardItem = ({feed}) => {
+    console.log("feed " + typeof feed);
     const [dialog, setDialog] = useContext(DialogContext);
 
     const onClickFeed = () => {

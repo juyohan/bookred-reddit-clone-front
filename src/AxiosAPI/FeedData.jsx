@@ -1,22 +1,28 @@
-import {axiosPrivateInstance} from "./Config/AxiosConfig";
-import {axiosPublicInstance} from "./Config/AxiosConfig";
+import {axiosInstance} from "./Config/AxiosConfig";
+import {getCookie} from "../JwtToken/Cookie";
 
 export const FeedData = {
     getFeedData : async function(params) {
-        return await axiosPublicInstance.request({
+        return await axiosInstance.request({
             url : `/api/feed/${params}`,
-            method : "GET"
+            method : "GET",
+            headers : {
+                Authorization : `Bearer ${getCookie('Access-Token')}`
+            }
         })
     },
 
     postLike : async function(type, id) {
-        return await axiosPrivateInstance.request({
+        return await axiosInstance.request({
             url : `/api/likes`,
             data : {
                 feedId : id,
                 likeType : type
             },
-            method : 'POST'
+            method : 'POST',
+            headers : {
+                Authorization : `Bearer ${getCookie('Access-Token')}`
+            }
         })
     },
 

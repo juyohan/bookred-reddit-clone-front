@@ -1,13 +1,13 @@
-import React, {useContext, useRef, useState} from "react";
-import {CardBottomWrapper, CommentButton, EtcButton, EtcButtonDiv, ShareButton} from "./CardBottom.styles";
-import {AiOutlineComment, BiDotsHorizontalRounded, BsThreeDots, RiShareForwardLine} from "react-icons/all";
+import React, {useContext, useState} from "react";
 import PropTypes from "prop-types";
+// css
+import {CardBottomWrapper, CommentButton, EtcButton, EtcButtonDiv, ShareButton} from "./CardBottom.styles";
+// Icons
+import {AiOutlineComment, BiDotsHorizontalRounded, RiShareForwardLine} from "react-icons/all";
+// Context API
 import DialogContext from "../../../../Context/DialogContext";
+// Component
 import ShareMenu from "./ShareMenu";
-
-function BsThreeDot(props) {
-    return null;
-}
 
 const CardBottom = ({commentCount, path}) => {
     const [dialog, setDialog] = useContext(DialogContext);
