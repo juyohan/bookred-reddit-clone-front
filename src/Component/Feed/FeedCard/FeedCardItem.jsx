@@ -7,9 +7,12 @@ import CardUser from "./CardUser";
 import CardFeed from "./CardFeed";
 import CardLike from "./CardLike";
 import CardBottom from "./CardBottom";
+import FeedDialog from "../../Dialog/FeedDialog";
 // Context API
 import DialogContext from "../../../Context/DialogContext";
-import FeedDialog from "../../Dialog/FeedDialog";
+// function
+import {TimeCalculation} from "../../../Helper/TimeCalculation";
+import {LikeCountFun} from "../../../Helper/LikeCountFun";
 
 const FeedCardItem = ({feed}) => {
     console.log("feed " + typeof feed);
@@ -24,13 +27,13 @@ const FeedCardItem = ({feed}) => {
             <CardWrapper type={'button'}
                          onClick={onClickFeed}
             >
-                <CardLike like={feed.likeCount}
+                <CardLike like={LikeCountFun(feed.likeCount)}
                           likeType={feed.likeType}
-                          feedId={feed.id}
+                          feedId={feed.feedId}
                 />
                 <CardContentWrapper>
                     <CardUser username={feed.username}
-                              time={feed.createDate}
+                              time={TimeCalculation(feed.createDate)}
                     />
                     <CardFeed title={feed.title}
                               desc={feed.desc}

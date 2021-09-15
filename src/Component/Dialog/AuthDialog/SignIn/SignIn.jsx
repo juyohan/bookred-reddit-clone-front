@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react';
+import React, {useState, useContext, useRef} from 'react';
 import PropTypes from "prop-types";
 import {useHistory} from "react-router-dom";
 // css
@@ -36,10 +36,12 @@ const SignIn = ({setMode}) => {
     const history = useHistory();
     const [state, actions] = useContext(UserContext);
     const [show, setShow] = useContext(DialogContext);
+    // const keyRef = useRef();
+
+
 
     const onLogin = (e) => {
-        // e.preventDefault();
-
+        e.preventDefault();
         // 토스트 메시지 출력
         const check = SignInCheckBlank(email, pw, setIsShowing, setToastMessage);
 
@@ -78,6 +80,12 @@ const SignIn = ({setMode}) => {
             });
     }
 
+    // 비밀번호에서만 엔터키 동작함.
+    const handleKeyPress = (e) => {
+        if (e.key === 'Enter')
+            onLogin(e);
+    }
+
     return (
         <>
             <AuthTitle>
@@ -98,6 +106,7 @@ const SignIn = ({setMode}) => {
                             placeholder={"비밀번호"}
                             type={"password"}
                             icon
+                            handleKey={handleKeyPress}
             />
 
             <AuthButton type={"button"}

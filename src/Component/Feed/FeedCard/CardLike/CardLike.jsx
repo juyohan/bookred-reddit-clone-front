@@ -15,7 +15,7 @@ const CardLike = ({like, feedId, likeType}) => {
     const [dialog, setDialog] = useContext(DialogContext);
 
     const onClickUpLike = (e) => {
-        if (getCookie('Access_Token'))
+        if (getCookie('Access-Token'))
             likeApi("UPLIKE", feedId);
         else {
             e.preventDefault();
@@ -24,8 +24,8 @@ const CardLike = ({like, feedId, likeType}) => {
     }
 
     const onClickDownLike = (e) => {
-        if (getCookie('Access_Token'))
-            likeApi("DOWNLIKE", feedId)
+        if (getCookie('Access-Token'))
+            likeApi("DOWNLIKE", feedId);
         else {
             e.preventDefault();
             setDialog.setAuthDialog(true);
@@ -69,7 +69,7 @@ const CardLike = ({like, feedId, likeType}) => {
 }
 
 CardLike.propTypes = {
-    like: PropTypes.number,
+    like: PropTypes.string,
     feedId: PropTypes.number,
     likeType : PropTypes.string,
 }

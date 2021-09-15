@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import FeedCardItem from "./FeedCardItem";
 
 const FeedCard = ({feedsInfo}) => {
-    console.log(typeof feedsInfo);
     return (
         <>
             {

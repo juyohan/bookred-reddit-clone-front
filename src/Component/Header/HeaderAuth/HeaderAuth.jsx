@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, {useContext, useRef} from 'react';
 import {BsFillCaretDownFill} from "react-icons/all";
 // css
 import {AuthWrapper, HeaderAuthWrapper, Login, Logo, UserInfo, Username} from "./HeaderAuth.styles";
@@ -14,6 +14,7 @@ import {getCookie} from "../../../JwtToken/Cookie";
 const HeaderAuth = () => {
     const [state, actions] = useContext(UserContext);
     const [show, setShow] = useContext(DialogContext);
+    const ref = useRef();
 
     const onOpenAuthDialog = (e) => {
         e.preventDefault();
@@ -22,7 +23,7 @@ const HeaderAuth = () => {
 
     const onOpenDialogSubMenu = (e) => {
         e.preventDefault();
-        if (show.dialogSubMenu)
+        if (show.dialogSubMenu === true)
             setShow.setDialogSubMenu(false);
         else
             setShow.setDialogSubMenu(true);
@@ -44,7 +45,8 @@ const HeaderAuth = () => {
                             </Username>
                         </UserInfo>
                         {/* 서브 메뉴 열기 */}
-                        <Logo onClick={onOpenDialogSubMenu}>
+                        <Logo ref={ref}
+                              onClick={onOpenDialogSubMenu}>
                             <BsFillCaretDownFill/>
                         </Logo>
                     </AuthWrapper>
@@ -53,7 +55,7 @@ const HeaderAuth = () => {
                         로그인
                     </Login>
             }
-            <DialogSubMenu/>
+            <DialogSubMenu dialogRef={ref}/>
             <AuthDialog/>
         </HeaderAuthWrapper>
     );

@@ -4,7 +4,7 @@ import {BiLockAlt, HiOutlineMail} from "react-icons/all";
 // css
 import {IWLInput, IWLInputLine, IWLLabel, IWLWrapper} from "./AuthDialog.styles";
 
-const InputWithLabel = ({ label, name, icon, ref, ...rest}) => (
+const InputWithLabel = ({ label, name, icon, ref, handleKey, ...rest}) => (
     <IWLWrapper>
         <IWLLabel ref={ref}>
             {label}
@@ -17,6 +17,7 @@ const InputWithLabel = ({ label, name, icon, ref, ...rest}) => (
                     <BiLockAlt size={25}/> : null
             }
             <IWLInput name={name}
+                      onKeyPress={handleKey}
                       {...rest}
             />
         </IWLInputLine>

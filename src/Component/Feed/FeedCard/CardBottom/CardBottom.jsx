@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext, useRef, useState} from "react";
 import PropTypes from "prop-types";
 // css
 import {CardBottomWrapper, CommentButton, EtcButton, EtcButtonDiv, ShareButton} from "./CardBottom.styles";
@@ -17,6 +17,7 @@ const CardBottom = ({commentCount, path}) => {
         positionX: null,
         positionY: null
     })
+    const ref = useRef();
 
     const onClickOpenFeedDialog = (e) => {
         // 현재 막음.
@@ -46,6 +47,8 @@ const CardBottom = ({commentCount, path}) => {
                     {commentCount} Comments
                 </CommentButton>
                 <ShareButton onClick={onClickOpenShareMenu}
+                             ref={ref}
+                             open={shareOpen}
                 >
                     <RiShareForwardLine size={20}/>
                     Share
@@ -57,12 +60,12 @@ const CardBottom = ({commentCount, path}) => {
                 </EtcButtonDiv>
                 {/*<div style={{flex : '1 1 auto'}}/>*/}
             </CardBottomWrapper>
-            {
-                shareOpen ?
-                    <ShareMenu position={subMenuPosition}
-                    />
-                    : null
-            }
+            {/* 공유하는 Dialog */}
+            <ShareMenu open={shareOpen}
+                       setOpen={setShareOpen}
+                       position={subMenuPosition}
+                       dialogRef={ref}
+            />
         </>
     );
 }
