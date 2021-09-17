@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
 
 export const ShareMenuWrapper = styled.div`
     margin-top: 0;
@@ -10,6 +10,7 @@ export const ShareMenuWrapper = styled.div`
   border: 1px solid white;
   overflow: hidden; 
   box-shadow: 0 2px 4px 0 rgba(28,28,28,0.2);
+  
 `
 
 export const ShareMenuButton = styled.button`

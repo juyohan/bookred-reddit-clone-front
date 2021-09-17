@@ -2,16 +2,17 @@ import styled from "styled-components";
 import {BsCaretDownFill, BsCaretUpFill} from "react-icons/all";
 
 export const CardLikeWrapper = styled.div`
-    display: flex;
+  display: flex;
   flex-direction: column;
+  box-sizing: border-box;
+  width: 43px;
+  left: 0;
+  top: 0;
   align-items: center;
   padding : 8px 4px;
-  background-color: floralwhite;
-  border-radius: 5px 0 0 5px;
-  border-right: 1px solid gray;
 `
 
-export const LikeCount = styled.p`
+export const LikeCount = styled.div`
   margin: 4px 0;
   font-size: 12px;
   font-weight: 700;

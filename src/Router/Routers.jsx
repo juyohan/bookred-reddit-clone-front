@@ -10,6 +10,7 @@ import Post from "../Component/Post";
 import ConfirmUser from "../Component/Setting/ConfirmUser";
 // Context API
 import GlobalContext from "../Context/GlobalContext";
+import {setCookie} from "../JwtToken/Cookie";
 
 const Routers = () => {
     const [path, setPath] = useContext(GlobalContext);
@@ -23,6 +24,8 @@ const Routers = () => {
             });
         }
     }, [pathname]);
+
+    setCookie('Access-Token', 'sdlfkjsdf');
 
     return (
         <>

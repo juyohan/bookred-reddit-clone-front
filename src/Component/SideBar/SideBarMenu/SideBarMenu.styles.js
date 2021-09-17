@@ -11,7 +11,7 @@ export const SideBarMenuWrapper = styled.div`
 
 export const SideMenuItem = styled(Link)`
     text-decoration: none;
-  color: ${props => props.isActive ? '#2478FF' : 'black'};
+  color: ${props => props.isActive === 'true' ? '#2478FF' : 'black'};
   font-size: 18px;
   margin-bottom: 30px;
   cursor : pointer;

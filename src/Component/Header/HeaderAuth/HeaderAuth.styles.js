@@ -28,6 +28,7 @@ export const Logo = styled.button`
     color: deepskyblue;
   }
 `
+
 export const AuthWrapper = styled.div`
     display: flex;
   align-items: center;

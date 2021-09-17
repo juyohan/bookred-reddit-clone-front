@@ -7,7 +7,7 @@ export const HomeWrapper = styled.div`
 `;
 
 export const Content = styled.div`
-    background-color: #D5D5D5;
+  background-color: #dae0e6;
   width: 100vw;
   height: 100%;
   display: flex;

@@ -46,11 +46,11 @@ export const ShareButton = styled.button`
   display: flex;
   border-radius: 2px;
   cursor: pointer;
-  background-color: inherit;
+  background-color: ${(props) => props.open === true ? 'lightgray' : 'inherit'};
   border: none;
   color: gray;
   text-decoration: none;
-
+  
   &:hover {
     background-color: lightgray;
   }

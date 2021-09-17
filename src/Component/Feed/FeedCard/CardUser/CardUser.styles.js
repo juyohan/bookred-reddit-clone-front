@@ -6,32 +6,51 @@ export const CardUserWrapper = styled.div`
   font-size: 12px;
   font-weight: 400;
   display: flex;
-  margin : 0 8px 8px;
+  margin: 0 8px 8px;
   align-items: center;
-  
+
   & > span {
     color: gray;
   }
 `
 
-export const UserButton = styled(Link) `
-    font-size: 12px;
+export const UserButton = styled(Link)`
+  font-size: 12px;
   font-weight: 700;
   display: inline;
   line-height: 20px;
   text-decoration: none;
   vertical-align: baseline;
   color: black;
-  
+
   &:hover {
     text-decoration-line: underline;
   }
 `
 
-export const DotIcon = styled.span`   
+export const DotIcon = styled.span`
   line-height: 20px;
   color: gray;
   font-size: 6px;
   margin: 0 4px;
   vertical-align: middle;
+`
+
+export const UsernameDiv = styled(Link)`
+  padding: 0 5px;
+  color: gray;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+`
+
+export const TimeDiv = styled(Link)`
+  color: gray;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
 `

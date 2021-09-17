@@ -14,7 +14,6 @@ export const MenuItems = styled.div`
   background-color: white;
 `;
 
-// eslint-disable-next-line no-mixed-operators
 export const Item = styled(Link)`
   text-decoration: none;
   color: black;
@@ -23,8 +22,8 @@ export const Item = styled(Link)`
   line-height: 55px;
   margin: 0 15px;
   height: 100%;
-  border-bottom: ${(props) => (props.active ? '6px solid #2478FF' : '6px solid white' )};
-  
+  border-bottom: ${(props) => props.isActive === 'true' ? '6px solid #2478FF' : '6px solid white'};
+ 
   &:hover {
     border-bottom: 6px solid lightgray;
   }
