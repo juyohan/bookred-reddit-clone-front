@@ -12,7 +12,6 @@ const TextEditorContainer = () => {
     });
 
     const onChangeValue = (content, delta, source, editor) => {
-        // console.log(editor.getText(content));
     //
         setValue({
             ...value,
