@@ -7,10 +7,6 @@ import ImageResize from "@looop/quill-image-resize-module-react";
 Quill.register('modules/ImageResize', ImageResize);
 
 const TextEditorContainer = () => {
-    // const [post, setPost] = useState({
-    //     // title : '',
-    //     content: '',
-    // });
     const [value, setValue] = useState({
         content : "",
     });
