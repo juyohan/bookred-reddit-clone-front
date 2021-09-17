@@ -10,7 +10,6 @@ const TextEditorContainer = () => {
     const [value, setValue] = useState({
         content : "",
     });
-    // const quillRef = useRef();
 
     const onChangeValue = (content, delta, source, editor) => {
         // console.log(editor.getText(content));
