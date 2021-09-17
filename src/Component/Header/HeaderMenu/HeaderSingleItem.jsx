@@ -8,16 +8,16 @@ import DialogContext from "../../../Context/DialogContext";
 // Cookie
 import {getCookie} from "../../../JwtToken/Cookie";
 
-const HeaderSingleItem = ({item, active, setActive}) => {
+const HeaderSingleItem = ({item, active}) => {
     const [dialog, setDialog] = useContext(DialogContext);
     const history = useHistory();
 
     // 해당 토큰이 없으면 렌더링 하지 않고 로그인 화면 나오게
     const onClickCheckToken = (e) => {
         // 알맞는 상단 바 밑에 효과 넣어주기 위함
-        setActive(item.id);
+        // setActive(item.id);
         // home을 클릭하면 메인 페이지로 이동
-        if (item.id === 'home') {
+        if (item.id === '/home') {
             e.preventDefault();
             history.push('/');
         }
@@ -29,8 +29,8 @@ const HeaderSingleItem = ({item, active, setActive}) => {
     }
 
     return (
-        <Item to={`/${item.id}`}
-              active={active}
+        <Item to={`${item.id}`}
+              isActive={`${active}`}
               onClick={onClickCheckToken}
         >
             {item.title}
@@ -43,11 +43,7 @@ HeaderSingleItem.propTypes = {
     item: PropTypes.oneOfType([
         PropTypes.object,
     ]).isRequired,
-    setActive : PropTypes.func
-}
-
-HeaderSingleItem.defaultProps = {
-    active: false,
+    // setActive : PropTypes.func
 }
 
 export default HeaderSingleItem;

@@ -40,22 +40,21 @@ const DialogSubMenu = ({dialogRef}) => {
         const click = () => {
             window.addEventListener('mousedown', checkClick);
         }
-        click();
+        if (show.dialogSubMenu)
+            click();
         return () => {
             window.removeEventListener('mousedown', checkClick);
         }
-    }, []);
+    }, [show.dialogSubMenu]);
 
-    // console.log(svgRef.current);
 
     // 외부를 클릭했을 때, 창 닫는 함수
     // 외부를 클릭했을 땐, 창이 잘 닫히지만, 해당 아이콘을 2번 클릭했을 땐, 닫히지 않음.
     const checkClick = (e) => {
         e.preventDefault();
-        if (e.target === dialogRef.current || e.target === dialogRef.current.firstChild){
+        if (e.target === dialogRef.current || e.target === dialogRef.current.firstChild) {
             e.stopPropagation();
-        }
-        else if (ref.current && !e.target.contains(ref.current))
+        } else if (ref.current && !e.target.contains(ref.current))
             setShow.setDialogSubMenu(false);
     }
 
@@ -77,7 +76,7 @@ const DialogSubMenu = ({dialogRef}) => {
 }
 
 DialogSubMenu.propTypes = {
-    dialogRef : PropTypes.object
+    dialogRef: PropTypes.object
 }
 
 export default DialogSubMenu;

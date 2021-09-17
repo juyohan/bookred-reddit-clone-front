@@ -8,7 +8,7 @@ const SideMenuSingleItem = ({item, isActive}) => {
 
     return (
         <SideMenuItem to={`/${item.id}`}
-                      isActive={isActive}
+                      isActive={`${isActive}`}
         >
             {item.icon}
             {item.title}

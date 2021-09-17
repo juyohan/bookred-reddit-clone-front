@@ -1,27 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
+import PropTypes from "prop-types";
 // css
 import {MenuItems} from "./HeaderMenu.styles";
 // 컴포넌트
 import HeaderSingleItem from "./HeaderSingleItem";
 
-const menuList = [
-    {
-        id: 'home',
-        title: 'Home',
-    },
-    {
-        id: 'group',
-        title: 'Group',
-    },
-    {
-        id: 'post',
-        title: 'Post',
-    }
-];
-
-const HeaderMenu = () => {
-    const [activeMenu, setActiveMenu] = useState('home');
-
+const HeaderMenu = ({activeMenu, menuList}) => {
     return (
         <MenuItems>
             {
@@ -29,12 +13,17 @@ const HeaderMenu = () => {
                     <HeaderSingleItem key={`HeaderMenu_${item.id}`}
                                       active={activeMenu === item.id}
                                       item={item}
-                                      setActive={setActiveMenu}
                     />
                 ))
             }
         </MenuItems>
     )
+};
+
+HeaderMenu.propTypes = {
+    activeMenu : PropTypes.string, // 현재 누른 값
+    // setActiveMenu : PropTypes.func, // 변화시켜줌
+    menuList : PropTypes.array.isRequired, // 상단의 메뉴 리스트
 }
 
 export default HeaderMenu;

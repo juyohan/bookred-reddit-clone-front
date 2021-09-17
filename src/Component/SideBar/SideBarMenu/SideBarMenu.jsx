@@ -36,7 +36,7 @@ const SideBarMenu = () => {
 
     let currentType = currentPath;
     if (currentPath === '/')
-        currentType  = '/hot'
+        currentType = '/hot'
 
     return (
         <SideBarMenuWrapper>

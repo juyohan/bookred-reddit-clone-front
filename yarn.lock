@@ -1496,6 +1496,11 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@looop/quill-image-resize-module-react@^3.1.5":
+  version "3.1.5"
+  resolved "https://registry.yarnpkg.com/@looop/quill-image-resize-module-react/-/quill-image-resize-module-react-3.1.5.tgz#1b46e9f29ada229e50b2339e9ea96d6b7104bdea"
+  integrity sha512-Rr8R8ScVoKYFzSKMG92sWv91AFggOq0qovrToRoVJFMVxHavltLdrpUIzsEXxsRkECI7EY+SSyiXFIu2Cj5W1Q==
+
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
   resolved "https://registry.yarnpkg.com/@nodelib/fs.scandir/-/fs.scandir-2.1.5.tgz#7619c2eb21b25483f6d167548b4cfd5a7488c3d5"

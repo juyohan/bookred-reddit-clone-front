@@ -1,10 +1,9 @@
 import React from 'react';
-import TextEditor from "./PostTextEditor";
+import TextEditorContainer from "./PostTextEditor/TextEditorContainer";
 
 const Post = () => {
     return (
-        <TextEditor>
-        </TextEditor>
+        <TextEditorContainer/>
     );
 }
 
