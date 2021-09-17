@@ -1,70 +1,46 @@
-# Getting Started with Create React App
+# BookRed   
+<br>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### 💻  목차
+* [🗣 프로젝트 소개](#-프로젝트-소개)
+* [🏫 사용 언어 및 라이브러리](#-사용-언어-및-라이브러리)
+* [📀 프로젝트 배포](#-프로젝트-배포)
+* [🤖 주요 기능](#-주요-기능)
+* [📄 프로젝트 기술](#-프로젝트-기술)
+  - [컴포넌트 스타일링 (Styled-Components)](#컴포넌트-스타일링-styled-components)
+</br>
 
-## Available Scripts
+## 🗣 프로젝트 소개   
+미국에서 운영중인 커뮤니티 사이트 [__레딧__](www.reddit.com, "Go Reddit"), `쓰레드` 및 `피드형` 게시판을 모티브로 한 프로젝트입니다.
+</br>
+</br>
 
-In the project directory, you can run:
+## 🏫 사용 언어 및 라이브러리
+- *React*
+  - *react-router-dom*
+  - *react-icons*
+  - *react-loader-spinner*
+  - *axios*
+  - *styled-component*  
+  - *prop-types*
+</br>
 
-### `yarn start`
+## 📀 프로젝트 배포       
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+</br>
+</br>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 🤖 주요 기능
 
-### `yarn test`
+</br>
+</br>
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 📄 프로젝트 기술
 
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+### 컴포넌트 스타일링 (Styled-Components)
+- 여러가지의 컴포넌트 스타일링들 중에서 `SCSS`와 `Styled-Components` 중에서 고민을 했습니다.
+- `SCSS`와 비교해 `Styled-Components`는 `id`를 사용해 관리가 되는 것이 아닌, 각 태그별로 관리를 할 수 있어 가독성이 높다고 생각했습니다.
+- Front를 제대로 해보지 않은 사람으로써, JS안에서 css를 구성할 수 있다는 이야기가 너무 매력적으로 다가와서 `SCSS`보단 `Styled-Components`가 더 이끌렸습니다.
+- 또한 태그에 Props를 통해 스타일 속성을 변경할 수 있어 하나의 태그를 분리해서 표현할 수 있었습니다.
+- 같은 속성을 사용하지만 거기서 더 추가를 해야 할 경우, 확장을 사용해 중복된 코드를 방지할 수 있었습니다.
+- 속도면에서 `SCSS`가 더 빠르다고 하지만, 큰 프로젝트가 아니기 때문에 개인적으로 더 매력으로 느껴지는 `Styled-Components`를 선택했습니다.
