@@ -2,6 +2,7 @@ import {UserProvider} from "./UserContext";
 import {FeedProvider} from "./FeedContext";
 import {GlobalProvider} from "./GlobalContext";
 import {DialogProvider} from "./DialogContext";
+import {PostProvider} from "./PostDataContext";
 
 export const RootProvider = ({children}) => {
     return (
@@ -9,7 +10,9 @@ export const RootProvider = ({children}) => {
             <FeedProvider>
                 <GlobalProvider>
                     <DialogProvider>
+                        <PostProvider>
                             {children}
+                        </PostProvider>
                     </DialogProvider>
                 </GlobalProvider>
             </FeedProvider>

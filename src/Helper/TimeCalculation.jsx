@@ -8,11 +8,11 @@ export const TimeCalculation = (time) => {
     const years = Math.floor(months / 12);
 
     if (minutes < 10)
-        return `just now`;
+        return `방금 전`;
     else if (minutes < 60)
-        return `${minutes} minutes ago`;
+        return `${minutes}분`;
     else if (hours < 24)
-        return `${hours} hours ago`;
+        return `${hours}시간`;
     else if (days < 30)
         return `${days} days ago`;
     else if (months < 12)

@@ -11,6 +11,7 @@ import ConfirmUser from "../Component/Setting/ConfirmUser";
 // Context API
 import GlobalContext from "../Context/GlobalContext";
 import {setCookie} from "../JwtToken/Cookie";
+import FeedDialog from "../Component/Dialog/FeedDialog";
 
 const Routers = () => {
     const [path, setPath] = useContext(GlobalContext);
@@ -25,30 +26,26 @@ const Routers = () => {
         }
     }, [pathname]);
 
-    setCookie('Access-Token', 'sdlfkjsdf');
-
     return (
         <>
             <Header/>
             <Switch>
                 {/* 홈 화면 */}
-                <Route exact path={['/', '/hot','/home']} render={props => <Home {...props}/>}/>
-                <Route exact path={'/new'} render={props => <Home {...props}/>}/>
-                <Route exact path={'/rising'} render={props => <Home {...props}/>}/>
-                <Route exact path={'/top'} render={props => <Home {...props}/>}/>
+                <Route exact path={['/', '/hot','/home', '/new', '/rising', '/top']} render={props => <Home {...props}/>}/>
 
                 {/* Header Menu */}
-                <Route exact path={'/group'} render={props => <Home {...props}/>}/>
-                <Route exact path={'/post'} render={props => <Post {...props}/>}/>
-                <Route exact path={'/setting'} render={props => <ConfirmUser {...props}/>}/>
+                <Route path={'/group'} render={props => <Home {...props}/>}/>
+                <Route path={'/post'} render={props => <Post {...props}/>}/>
+                <Route path={'/setting'} render={props => <ConfirmUser {...props}/>}/>
 
                 {/* 프로필 화면 */}
-                <PrivateRoute path={'/:username'}
+                <PrivateRoute path={'/user/:username'}
                               render={props =>
                                   <Profile {...props}
                                   />
                               }
                 />
+
             </Switch>
         </>
     );

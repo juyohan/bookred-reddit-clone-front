@@ -1,0 +1,59 @@
+.public-DraftEditor-content {
+    background-color: white;
+    min-height: 122px;
+    overflow: hidden;
+    padding: 8px 16px;
+    resize: vertical;
+}
+
+.DraftEditor-root {
+    overflow: auto;
+    position: relative;
+}
+
+.DraftEditor-root, .public-DraftEditor-content,
+.DraftEditor-editorContainer {
+    height: inherit;
+    text-align: initial;
+}
+
+.public-DraftStyleDefault-ltr {
+    direction: ltr;
+    text-align: left;
+}
+
+.public-DraftStyleDefault-block {
+    position: relative;
+    white-space: pre-wrap;
+}
+
+.test:first-child div:first-child {
+    padding-top: 0;
+}
+
+.test>div {
+    padding: .3em 0 0.25em;
+}
+
+.test>div:last-child {
+    padding-bottom: 0;
+}
+
+/*.public-DraftStyleDefault-block[data-offset-key="null-0-0"]::after {*/
+/*    bottom: 0;*/
+/*    content: 'Text (optional)';*/
+/*    !*content: "|";*!*/
+/*    cursor: text;*/
+/*    left: 0;*/
+/*    top: 0;*/
+/*    position: absolute;*/
+/*    color: #878a8c;*/
+/*}*/
+
+/*.public-DraftStyleDefault-block:last-child::after {*/
+/*    content : none;*/
+/*}*/
+
+/*.RichEditor-hidePlaceholder .public-DraftEditorPlaceholder-root {*/
+/*    display: none;*/
+/*}*/

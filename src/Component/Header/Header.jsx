@@ -1,10 +1,11 @@
 import React, {useContext, useEffect, useState} from 'react';
 import {SiReddit} from "react-icons/all";
 // css
-import {HeaderWrapper, Logo, LogoTitle} from "./Header.styles";
+import {BlankDiv, HeaderWrapper, Logo, LogoTitle, SearchDiv} from "./Header.styles";
 // 컴포넌트
 import HeaderAuth from "./HeaderAuth";
 import HeaderMenu from "./HeaderMenu";
+import HeaderSearch from "./HeaderSearch";
 // Context API
 import GlobalContext from "../../Context/GlobalContext";
 
@@ -30,7 +31,7 @@ const Header = () => {
 
     // post 페이지에서 새로고침을 했을 때, 헤더에 Post 밑에 표시하기 위함
     useEffect(() => {
-        if (currentPath === '/')
+        if (currentPath === '/' || '/top' || '/rising' || '/new' || '/hot')
             setActiveMenu('/home')
         else
             setActiveMenu(currentPath);
@@ -47,17 +48,27 @@ const Header = () => {
             <Logo to={'/'}
                   onClick={onClickLogo}
             >
-                <SiReddit size={35}
+                <SiReddit size={40}
                           color={'#2478FF'}
                 />
                 <LogoTitle>
                     BookRed
                 </LogoTitle>
             </Logo>
+
             {/* 메뉴 */}
             <HeaderMenu menuList={menuList}
                         activeMenu={activeMenu}
             />
+
+            <SearchDiv>
+                {/* 검색하는 부분 */}
+                <HeaderSearch/>
+
+                {/* 빈 박스 */}
+                {/*<BlankDiv/>*/}
+            </SearchDiv>
+
             {/* 로그인 하는 부분 */}
             <HeaderAuth/>
         </HeaderWrapper>

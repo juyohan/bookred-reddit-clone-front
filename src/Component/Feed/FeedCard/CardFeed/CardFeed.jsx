@@ -1,8 +1,9 @@
 import React from 'react';
 import PropTypes from "prop-types";
-import {CardFeedDesc, CardFeedTitle, CardFeedWrapper} from "./CardFeed.styles";
+// css
+import {CardContent, CardFeedDesc, CardFeedTitle, CardFeedWrapper} from "./CardFeed.styles";
 
-const CardFeed = ({title, desc}) => {
+const CardFeed = ({title, content}) => {
     return (
         <CardFeedWrapper>
             <CardFeedTitle>
@@ -10,10 +11,14 @@ const CardFeed = ({title, desc}) => {
                     {title}
                 </h3>
             </CardFeedTitle>
-            <CardFeedDesc>
-                <p>
-                    {desc}
-                </p>
+            <CardFeedDesc style={{
+                maxHeight : '120px'
+            }}
+            >
+                 <CardContent dangerouslySetInnerHTML={{
+                     __html : content
+                 }}>
+                 </CardContent>
             </CardFeedDesc>
         </CardFeedWrapper>
     )
@@ -21,7 +26,7 @@ const CardFeed = ({title, desc}) => {
 
 CardFeed.propTypes = {
     title : PropTypes.string,
-    desc : PropTypes.string,
+    content : PropTypes.string,
 }
 
 export default CardFeed;

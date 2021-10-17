@@ -1,7 +1,14 @@
 import React, {useContext, useRef} from 'react';
-import {BsFillCaretDownFill} from "react-icons/all";
+import { IoIosArrowDown} from "react-icons/all";
 // css
-import {AuthWrapper, HeaderAuthWrapper, Login, Logo, UserInfo, Username} from "./HeaderAuth.styles";
+import {
+    AuthWrapper,
+    HeaderAuthButton,
+    HeaderAuthWrapper, HeaderImageAndUsernameWrapper,
+    HeaderUserImage,
+    Login,
+    UsernameDiv
+} from "./HeaderAuth.styles";
 // 컴포넌트
 import AuthDialog from "../../Dialog/AuthDialog";
 import DialogSubMenu from "../../Dialog/AuthDialog/SubMenu";
@@ -23,39 +30,49 @@ const HeaderAuth = () => {
 
     const onOpenDialogSubMenu = (e) => {
         e.preventDefault();
-        if (show.dialogSubMenu === true)
+        if (show.dialogSubMenu)
             setShow.setDialogSubMenu(false);
         else
             setShow.setDialogSubMenu(true);
+
     }
 
     return (
         <HeaderAuthWrapper>
+
             {
                 getCookie("Access-Token")
                     ?
                     <AuthWrapper>
-                        <div>
-                            이미지
-                        </div>
+                        <HeaderAuthButton onClick={onOpenDialogSubMenu}
+                                          ref={ref}
+                                          isClick={show.dialogSubMenu}
+                        >
+                            <HeaderImageAndUsernameWrapper>
+                                <HeaderUserImage>
+                                    이미지
+                                </HeaderUserImage>
 
-                        <UserInfo to={`/${state.userInfo.username}`}>
-                            <Username>
-                                {state.userInfo.username}
-                            </Username>
-                        </UserInfo>
-                        {/* 서브 메뉴 열기 */}
-                        <Logo ref={ref}
-                              onClick={onOpenDialogSubMenu}>
-                            <BsFillCaretDownFill/>
-                        </Logo>
+                                {/* 닉네임 */}
+                                <UsernameDiv>
+                                    {state.userInfo.username}
+                                </UsernameDiv>
+                            </HeaderImageAndUsernameWrapper>
+
+                            <IoIosArrowDown style={{
+                                marginRight: '6px'
+                            }}/>
+
+                        </HeaderAuthButton>
                     </AuthWrapper>
                     :
                     <Login onClick={onOpenAuthDialog}>
                         로그인
                     </Login>
             }
-            <DialogSubMenu dialogRef={ref}/>
+            <DialogSubMenu dialogRef={ref}
+                           username={state.userInfo.username}
+            />
             <AuthDialog/>
         </HeaderAuthWrapper>
     );

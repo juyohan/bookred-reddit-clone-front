@@ -11,6 +11,7 @@ export const AuthDialogBackGround = styled.div`
   background-color: rgba(0, 0, 0, 0.8);
   left: 0;
   top: 0;
+  z-index: 99;
 `;
 
 export const AuthDialogWrapper = styled.div`
@@ -19,6 +20,7 @@ export const AuthDialogWrapper = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
+  border-radius: 5px
 `;
 
 export const AuthDialogLogo = styled.button`
@@ -28,6 +30,7 @@ export const AuthDialogLogo = styled.button`
   color: black;
   border: none;
   background-color: lightblue;
+  border-radius: 999px;
 `;
 
 export const AuthDialogHeader = styled.div`
@@ -41,12 +44,14 @@ export const AuthDialogHeader = styled.div`
   font-size: 2.4rem;
   letter-spacing: 5px;
   text-decoration: none;
+  border-radius: 5px 5px 0 0;
 `
 
 export const AuthDialogContent = styled.div`
   background: white;
   padding: 2rem;
   height: auto;
+  border-radius: 5px;
 `;
 
 export const IWLWrapper = styled.div`
@@ -92,7 +97,7 @@ export const AuthButton = styled.div`
   font-size: 1.25rem;
   font-weight: 500;
   cursor: pointer;
-  //user-select: none;
+  border-radius: 99px;
   transition: .2s all;
 
   &:hover {

@@ -11,7 +11,7 @@ export const FeedBarWrapper = styled.div`
 
 export const FeedBarTitle = styled.span`
     margin-left: 5px;
-  font-size: 20px;
+  font-size: 25px;
   font-weight: 500;
   
   &:first-letter {

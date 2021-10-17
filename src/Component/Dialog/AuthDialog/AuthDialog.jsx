@@ -25,7 +25,7 @@ const AuthDialog = () => {
 
     if (show.authDialog)
         return (
-            <AuthDialogBackGround >
+            <AuthDialogBackGround>
                 <AuthDialogWrapper>
                     <AuthDialogLogo onClick={(e) => {
                         e.preventDefault();
@@ -33,21 +33,21 @@ const AuthDialog = () => {
                     }}>
                         <IoClose size={"35"}/>
                     </AuthDialogLogo>
-                    <AuthDialogHeader>
-                        BookRed
-                    </AuthDialogHeader>
-                    <AuthDialogContent>
-                        {
-                            mode === 'login' ?
-                                <SignIn setMode={setMode}
-                                />
-                                : mode === 'signup' ?
-                                <SignUp setMode={setMode}/>
-                                : mode === 'find' ?
-                                    <FindPw setMode={setMode}/>
-                                    : null
-                        }
-                    </AuthDialogContent>
+                        <AuthDialogHeader>
+                            BookRed
+                        </AuthDialogHeader>
+                        <AuthDialogContent>
+                            {
+                                mode === 'login' ?
+                                    <SignIn setMode={setMode}
+                                    />
+                                    : mode === 'signup' ?
+                                        <SignUp setMode={setMode}/>
+                                        : mode === 'find' ?
+                                            <FindPw setMode={setMode}/>
+                                            : null
+                            }
+                        </AuthDialogContent>
                 </AuthDialogWrapper>
             </AuthDialogBackGround>
         )

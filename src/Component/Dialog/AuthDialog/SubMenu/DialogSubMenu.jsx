@@ -6,22 +6,23 @@ import {SubMenuWrapper} from "./DialogSubMenu.styles";
 // Component
 import DialogSubSingleItems from "./DialogSubSingleItems";
 // Icon
-import {IoIosContact, IoIosLogOut} from "react-icons/all";
+import {AiFillSetting, CgProfile, IoIosLogOut} from "react-icons/all";
 import PropTypes from "prop-types";
 
 const subMenuList = [
     {
-        id: 'mystuff',
+        id: 'myStuff',
         title: 'My Stuff',
-        icon: <IoIosContact size={20}/>,
         submenu: [
             {
-                id: 'profile',
-                title: 'Profile'
+                id: `user`,
+                title: 'Profile',
+                icon: <CgProfile size={20}/>
             },
             {
                 id: 'setting',
-                title: 'User Setting'
+                title: 'User Setting',
+                icon: <AiFillSetting size={20}/>
             }
         ]
     },
@@ -31,7 +32,8 @@ const subMenuList = [
         icon: <IoIosLogOut size={20}/>
     }
 ]
-const DialogSubMenu = ({dialogRef}) => {
+
+const DialogSubMenu = ({dialogRef, username}) => {
     const [show, setShow] = useContext(DialogContext);
     const ref = useRef();
 
@@ -49,13 +51,17 @@ const DialogSubMenu = ({dialogRef}) => {
 
 
     // 외부를 클릭했을 때, 창 닫는 함수
-    // 외부를 클릭했을 땐, 창이 잘 닫히지만, 해당 아이콘을 2번 클릭했을 땐, 닫히지 않음.
     const checkClick = (e) => {
-        e.preventDefault();
-        if (e.target === dialogRef.current || e.target === dialogRef.current.firstChild) {
+        if (dialogRef.current.contains(e.target)) {
+            e.preventDefault();
+        }
+        else if (ref.current.contains(e.target)) {
             e.stopPropagation();
-        } else if (ref.current && !e.target.contains(ref.current))
+        }
+        else {
+            e.preventDefault();
             setShow.setDialogSubMenu(false);
+        }
     }
 
     if (show.dialogSubMenu)

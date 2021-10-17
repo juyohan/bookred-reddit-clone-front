@@ -4,7 +4,7 @@ import 'react-quill/dist/quill.snow.css'
 
 const TextEditor = ({modules, formats, onChangeValue, value}) => {
     return (
-        <div style={{height: "650px"}}>
+        <div style={{height: "350px"}}>
             <ReactQuill
                 style={{height: '300px'}}
                 modules={modules}

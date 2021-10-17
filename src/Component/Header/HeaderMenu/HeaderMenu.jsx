@@ -8,22 +8,22 @@ import HeaderSingleItem from "./HeaderSingleItem";
 const HeaderMenu = ({activeMenu, menuList}) => {
     return (
         <MenuItems>
-            {
-                menuList.length > 0 && menuList.map(item => (
-                    <HeaderSingleItem key={`HeaderMenu_${item.id}`}
-                                      active={activeMenu === item.id}
-                                      item={item}
-                    />
-                ))
-            }
+                {
+                    menuList.length > 0 && menuList.map(item => (
+                        <HeaderSingleItem key={`HeaderMenu_${item.id}`}
+                                          active={activeMenu === item.id}
+                                          item={item}
+                        />
+                    ))
+                }
         </MenuItems>
     )
 };
 
 HeaderMenu.propTypes = {
-    activeMenu : PropTypes.string, // 현재 누른 값
+    activeMenu: PropTypes.string, // 현재 누른 값
     // setActiveMenu : PropTypes.func, // 변화시켜줌
-    menuList : PropTypes.array.isRequired, // 상단의 메뉴 리스트
+    menuList: PropTypes.array.isRequired, // 상단의 메뉴 리스트
 }
 
 export default HeaderMenu;

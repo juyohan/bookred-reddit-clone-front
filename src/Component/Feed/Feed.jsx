@@ -1,4 +1,4 @@
-import React, {useContext, useEffect} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 // css
 import {FeedWrapper} from "./Feed.styles";
 // Component
@@ -23,9 +23,11 @@ const preTitle = (title) => {
 
 const Feed = () => {
     const [feed, setFeed] = useContext(FeedContext);
-    const {feedsInfo, fetching, error, model} = feed;
-    const {setFeedsInfo, setFetching, setError, setModel} = setFeed;
+    const {feedsInfo, loading, fetching, error, model} = feed;
+    const {setFeedsInfo, setLoading, setFetching, setError, setModel} = setFeed;
 
+    const [pageNum, setPageNum] = useState(1);
+    const [totalPage, setTotalPage] = useState(null);
     const [path, setPath] = useContext(GlobalContext);
 
     const params = preTitle(path.router.currentPath);
@@ -34,23 +36,70 @@ const Feed = () => {
     // url이 바뀔 때 마다, 피드의 정보를 가져옴
     useEffect(() => {
         if (feedParams.includes(params)) {
-            setFetching(true);
+            setLoading(true);
+            setPageNum(1);
 
-            API.FeedData.getFeedData(params).then(res => {
+            API.FeedData.getFeedData(params, 0).then(res => {
+                if (res.status === 200) {
+                    setLoading(false);
+                    setError(false);
+                    setFeedsInfo(res.data.feed);
+                    setTotalPage(res.data.totalPage);
+                }
+            }).catch(err => {
+                setLoading(false);
+                setError(true);
+                console.log(err);
+            });
+        }
+
+    }, [params]);
+
+    /**
+     * document.element 를 이용한 무한 스크롤링
+     **/
+     useEffect(() => {
+        const scrollEvent = () => window.addEventListener('scroll', handleScroll);
+        scrollEvent();
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        }
+    })
+
+     const fetchMoreFeedData = () => {
+        setFetching(true);
+
+        if (feedParams.includes(params)) {
+            API.FeedData.getFeedData(params, pageNum).then(res => {
                 if (res.status === 200) {
                     setFetching(false);
                     setError(false);
-                    setFeedsInfo(res.data.data);
+                    const next = res.data.feed;
+                    const mergeData = feedsInfo.concat(...next);
+                    setFeedsInfo(mergeData);
+                    setPageNum(pageNum + 1);
                 }
             }).catch(err => {
                 setFetching(false);
                 setError(true);
                 console.log(err);
-            });
+            })
         }
-    }, [params]);
+        setFetching(false);
+    }
 
-    if (fetching)
+     const handleScroll = () => {
+        const scrollHeight = document.documentElement.scrollHeight;
+        const scrollTop = document.documentElement.scrollTop;
+        const clientHeight = document.documentElement.clientHeight;
+        if (scrollTop + clientHeight >= scrollHeight - 50 && !fetching) {
+            if (pageNum <= totalPage)
+                fetchMoreFeedData();
+        }
+    }
+
+
+    if (loading)
         return (
             <FeedLoading/>
         )
@@ -66,6 +115,7 @@ const Feed = () => {
         <FeedWrapper>
             <FeedBar params={params}/>
             <FeedCard feedsInfo={feedsInfo}/>
+
         </FeedWrapper>
     )
 }

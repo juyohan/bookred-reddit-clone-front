@@ -6,10 +6,11 @@ export const HomeWrapper = styled.div`
   height: 100%;
 `;
 
-export const Content = styled.div`
+export const HomeContent = styled.div`
   background-color: #dae0e6;
   width: 100vw;
   height: 100%;
   display: flex;
   flex-direction: row;
+  justify-content: center;
 `;

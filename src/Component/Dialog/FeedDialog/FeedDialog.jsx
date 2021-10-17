@@ -1,19 +1,18 @@
 import React, {useContext} from "react";
 // css
-import {FeedDialogWrapper} from "./FeedDialog.styles";
+import {FeedDialogContainer, FeedDialogWrapper} from "./FeedDialog.styles";
 // Context API
 import DialogContext from "../../../Context/DialogContext";
 
 const FeedDialog = () => {
-    const [dialog, setDialog] = useContext(DialogContext);
 
-    if (dialog.feedDialog)
-        return (
+    return (
+        <FeedDialogContainer>
             <FeedDialogWrapper>
+
             </FeedDialogWrapper>
-        );
-    else
-        return null;
+        </FeedDialogContainer>
+    );
 }
 
 export default FeedDialog;

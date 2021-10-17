@@ -5,7 +5,6 @@ export const FeedLoadingWrapper = styled(FeedWrapper)`
     display: flex;
   justify-content: center;
   flex-direction: column;
-  
 `
 
 export const FeedLoadingDiv = styled.div`

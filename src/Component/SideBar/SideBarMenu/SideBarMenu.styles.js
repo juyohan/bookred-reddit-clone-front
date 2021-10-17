@@ -2,11 +2,13 @@ import styled from "styled-components";
 import {Link} from "react-router-dom";
 
 export const SideBarMenuWrapper = styled.div`
-  padding-top: 110px;
+  padding-top: 120px;
   display: flex;
   flex-direction: column;
-  padding-left: 20px;
-
+  padding-left: 0;
+  
+  //@media (min-width: 768px) {
+  //  padding-left: 50px;  }
 `;
 
 export const SideMenuItem = styled(Link)`

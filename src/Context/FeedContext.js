@@ -4,12 +4,14 @@ const FeedContext = createContext({
     state : {
         feedsInfo : {},
         fetching : false,
+        loading : false,
         error : false,
         model : {}
     },
     actions : {
         setFeedsInfo : () => {},
         setFetching : () => {},
+        setLoading : () => {},
         setError : () => {},
         setModel : () => {}
     }
@@ -18,12 +20,13 @@ const FeedContext = createContext({
 const FeedProvider = ({children}) => {
     const [feedsInfo, setFeedsInfo] = useState({});
     const [fetching, setFetching] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [error, setError] = useState(false);
     const [model, setModel] = useState({});
 
     const value = {
-        state : {feedsInfo, fetching, error, model},
-        actions : {setFeedsInfo, setFetching, setError, setModel}
+        state : {feedsInfo, loading, fetching, error, model},
+        actions : {setFeedsInfo, setLoading, setFetching, setError, setModel}
     }
 
     return (
