@@ -26,6 +26,8 @@ const Routers = () => {
         }
     }, [pathname]);
 
+    setCookie('Access-Token', "sdkfjsldkjflksdjf");
+
     return (
         <>
             <Header/>

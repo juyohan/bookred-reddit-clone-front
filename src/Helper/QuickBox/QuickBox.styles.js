@@ -1,7 +1,7 @@
 import styled, {css} from "styled-components";
 
 export const QuickButtonWrapper = styled.div`
-    top: calc(100vh - 8px);
+    top: calc(100vh - 17px);
   position: sticky;
   margin-top: 45px;
   display: flex;

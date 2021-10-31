@@ -28,16 +28,20 @@ export const FeedData = {
             }
         })
     },
-    saveFeed : async function(data) {
+    saveFeed : async function(data, files) {
         return await axiosInstance.request({
             url : `/api/feed/save`,
-            data : {
-                title : data.title,
-                content : data.content,
-            },
             method : 'POST',
             headers : {
-                Authorization : `Bearer ${getCookie('Access-Token')}`
+                Authorization : `Bearer ${getCookie('Access-Token')}`,
+                "Content-Type" : "multipart/form-data"
+            },
+            params : {
+                'files' : files,
+                'feed-dto' : {
+                    title : data.title,
+                    content : data.content
+                }
             }
         })
     }

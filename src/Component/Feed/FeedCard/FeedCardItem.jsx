@@ -23,6 +23,7 @@ const FeedCardItem = ({feed}) => {
 
     return (
         <>
+            {/* 해당 피드를 클릭 할 경우 이동*/}
             <CardWrapper type={'button'}
                          onClick={onClickFeed}
             >

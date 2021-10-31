@@ -55,6 +55,14 @@ const Feed = () => {
 
     }, [params]);
 
+    // useEffect(() => {
+    //
+    // })
+    //
+    // const getFileContent = () => {
+    //
+    // }
+
     /**
      * document.element 를 이용한 무한 스크롤링
      **/
@@ -93,7 +101,7 @@ const Feed = () => {
         const scrollTop = document.documentElement.scrollTop;
         const clientHeight = document.documentElement.clientHeight;
         if (scrollTop + clientHeight >= scrollHeight - 50 && !fetching) {
-            if (pageNum <= totalPage)
+            if (pageNum < totalPage)
                 fetchMoreFeedData();
         }
     }
