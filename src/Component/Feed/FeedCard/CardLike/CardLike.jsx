@@ -9,8 +9,8 @@ import DialogContext from "../../../../Context/DialogContext";
 // Cookie
 import {getCookie} from "../../../../JwtToken/Cookie";
 
-const CardLike = ({like, feedId, likeType}) => {
-    const [vote, setVote] = useState(like);
+const CardLike = ({likeCount, feedId, likeType}) => {
+    const [vote, setVote] = useState(likeCount);
     const [check, setCheck] = useState(likeType);
     const [dialog, setDialog] = useContext(DialogContext);
 
@@ -69,7 +69,7 @@ const CardLike = ({like, feedId, likeType}) => {
 }
 
 CardLike.propTypes = {
-    like: PropTypes.string,
+    likeCount: PropTypes.string,
     feedId: PropTypes.number,
     likeType : PropTypes.string,
 }

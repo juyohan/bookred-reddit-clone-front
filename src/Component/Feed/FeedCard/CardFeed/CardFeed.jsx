@@ -1,9 +1,18 @@
 import React from 'react';
 import PropTypes from "prop-types";
 // css
-import {CardContent, CardFeedDesc, CardFeedTitle, CardFeedWrapper} from "./CardFeed.styles";
+import {
+    CardContent,
+    CardFeedDesc,
+    CardFeedTitle,
+    CardFeedWrapper,
+} from "./CardFeed.styles";
+// Component
+import CardImage from "./CardImage";
+import {CardImageWrapper, ImageItemWrapper} from "./CardImage/CardImage.styles";
 
-const CardFeed = ({title, content}) => {
+const CardFeed = ({title, feedContent, fileNames}) => {
+    console.log(fileNames);
     return (
         <CardFeedWrapper>
             <CardFeedTitle>
@@ -16,10 +25,15 @@ const CardFeed = ({title, content}) => {
             }}
             >
                  <CardContent dangerouslySetInnerHTML={{
-                     __html : content
+                     __html : feedContent
                  }}>
                  </CardContent>
             </CardFeedDesc>
+            {
+                fileNames.length > 0 ?
+                    <CardImage fileNames={fileNames}/>
+                    : null
+            }
         </CardFeedWrapper>
     )
 }
@@ -27,6 +41,7 @@ const CardFeed = ({title, content}) => {
 CardFeed.propTypes = {
     title : PropTypes.string,
     content : PropTypes.string,
+    fileNames : PropTypes.object
 }
 
 export default CardFeed;

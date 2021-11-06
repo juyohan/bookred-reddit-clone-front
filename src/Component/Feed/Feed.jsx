@@ -43,7 +43,7 @@ const Feed = () => {
                 if (res.status === 200) {
                     setLoading(false);
                     setError(false);
-                    setFeedsInfo(res.data.feed);
+                    setFeedsInfo(res.data.data);
                     setTotalPage(res.data.totalPage);
                 }
             }).catch(err => {
@@ -54,14 +54,6 @@ const Feed = () => {
         }
 
     }, [params]);
-
-    // useEffect(() => {
-    //
-    // })
-    //
-    // const getFileContent = () => {
-    //
-    // }
 
     /**
      * document.element 를 이용한 무한 스크롤링
@@ -82,7 +74,7 @@ const Feed = () => {
                 if (res.status === 200) {
                     setFetching(false);
                     setError(false);
-                    const next = res.data.feed;
+                    const next = res.data.data;
                     const mergeData = feedsInfo.concat(...next);
                     setFeedsInfo(mergeData);
                     setPageNum(pageNum + 1);
@@ -123,6 +115,7 @@ const Feed = () => {
         <FeedWrapper>
             <FeedBar params={params}/>
             <FeedCard feedsInfo={feedsInfo}/>
+
 
         </FeedWrapper>
     )
