@@ -15,3 +15,5 @@ export const AUTH_SIGNUP_EMAIL_EXIST = "이미 존재하는 이메일입니다."
 export const AUTH_SIGNIN_EMAIL_BLANK = "이메일을 입력해주세요.";
 export const AUTH_SIGNIN_PW_BLANK = "비밀번호를 입력해주세요.";
 export const AUTH_SIGNIN_NO_USER = "비밀번호 및 이메일이 틀렸습니다.";
+
+export const AUTH_NO_EMAIL_CERTIFICATION = "이메일 인증을 완료해주세요.";

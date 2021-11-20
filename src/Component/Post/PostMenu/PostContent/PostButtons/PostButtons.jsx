@@ -31,7 +31,7 @@ const PostButtons = () => {
 
     const onClickButton = (e) => {
         e.preventDefault();
-        API.FeedData.saveFeed(post.postData)
+        API.FeedData.saveFeed(post.postData, null)
             .then(res => {
                 // 해당 피드의 페이지로
                 if (res.status === 200) {

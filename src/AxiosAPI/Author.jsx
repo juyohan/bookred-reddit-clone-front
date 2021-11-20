@@ -30,10 +30,7 @@ export const Author = {
                 Authorization : `Bearer ${getCookie('Access-Token')}`
             }
         })
-    }
-
-
-    ,
+    },
 
     checkEmail: async function (email) {
         return await axiosInstance.request({
@@ -41,9 +38,6 @@ export const Author = {
             method: 'POST',
             data: {
                 email: email
-            },
-            headers : {
-                Authorization : `Bearer ${getCookie('Access-Token')}`
             }
         })
     }
@@ -55,9 +49,6 @@ export const Author = {
             method: 'POST',
             data: {
                 username: nickname
-            },
-            headers : {
-                Authorization : `Bearer ${getCookie('Access-Token')}`
             }
         })
     }

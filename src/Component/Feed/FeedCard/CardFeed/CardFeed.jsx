@@ -9,10 +9,9 @@ import {
 } from "./CardFeed.styles";
 // Component
 import CardImage from "./CardImage";
-import {CardImageWrapper, ImageItemWrapper} from "./CardImage/CardImage.styles";
 
 const CardFeed = ({title, feedContent, fileNames}) => {
-    console.log(fileNames);
+    // console.log(fileNames);
     return (
         <CardFeedWrapper>
             <CardFeedTitle>
@@ -28,6 +27,7 @@ const CardFeed = ({title, feedContent, fileNames}) => {
                      __html : feedContent
                  }}>
                  </CardContent>
+                dlkjsdf
             </CardFeedDesc>
             {
                 fileNames.length > 0 ?

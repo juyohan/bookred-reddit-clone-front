@@ -1,4 +1,4 @@
-import React, {useState, useContext, useRef} from 'react';
+import React, {useState, useContext, useEffect} from 'react';
 import PropTypes from "prop-types";
 import {useHistory} from "react-router-dom";
 // css
@@ -23,7 +23,7 @@ import UserContext from "../../../../Context/UserContext";
 import DialogContext from "../../../../Context/DialogContext";
 // Cookie
 import {setCookie} from "../../../../JwtToken/Cookie";
-
+import KakaoBtn from "./KakaoBtn";
 
 const SignIn = ({setMode}) => {
     const [{email, pw}, onChange, reset] = useInput({
@@ -37,8 +37,6 @@ const SignIn = ({setMode}) => {
     const [state, actions] = useContext(UserContext);
     const [show, setShow] = useContext(DialogContext);
     // const keyRef = useRef();
-
-
 
     const onLogin = (e) => {
         e.preventDefault();
@@ -63,16 +61,19 @@ const SignIn = ({setMode}) => {
                         // localStorage.setItem('Access_Token', res.headers.authorization);
                         // context에 저장
                         // actions.setJwtToken(res.headers.authorization);
-                        // context에 user정보 저장
-                        actions.setUserInfo({
-                            username : res.data
-                        });
+
                         // Label 초기화
                         reset();
                         // Dialog 닫기
                         setShow.setAuthDialog(false);
                         // 홈으로 이동
-                        history.push('/');
+                        window.location.replace("/");
+
+                        // context에 user정보 저장
+                        // result 객체에 유저 정보도 같이 넣어놔야하는가? 닉네임같은거
+                        actions.setUserInfo({
+                            username : res.data
+                        });
                     }
                 }).catch(err => {
                 setIsShowing(true);
@@ -114,6 +115,11 @@ const SignIn = ({setMode}) => {
             >
                 로그인
             </AuthButton>
+            {/* 카카오 로그인 */}
+            <KakaoBtn setIsShowing={setIsShowing}
+                      setToastMessage={setToastMessage}
+            />
+
             <AuthHandlerWrapper>
                 <AuthHandler to={'/signup'}
                              setMode={setMode}
