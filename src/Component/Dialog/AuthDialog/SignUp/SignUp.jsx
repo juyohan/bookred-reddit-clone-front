@@ -37,6 +37,7 @@ const SignUp = ({setMode}) => {
         emailStatus: null,
         nicknameStatus: null
     }, data);
+
     const [state, actions] = useContext(UserContext);
 
     const {email, nickname, pw, pwConfirm} = data;

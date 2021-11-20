@@ -92,7 +92,7 @@ export const useCheckValidateAndExist = (initial, data) => {
                         }
                     })
                     .catch(err => {
-                        if (err.response.status === 406) {
+                        if (err.response.status === 406 || err.response.status === 500) {
                             dispatch({
                                 type: 'EMAIL_EXIST'
                             })

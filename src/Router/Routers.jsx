@@ -10,12 +10,13 @@ import Post from "../Component/Post";
 import ConfirmUser from "../Component/Setting/ConfirmUser";
 // Context API
 import GlobalContext from "../Context/GlobalContext";
-import {setCookie} from "../JwtToken/Cookie";
-import FeedDialog from "../Component/Dialog/FeedDialog";
+import KakaoAuth from "../Component/Dialog/AuthDialog/SignIn/KakaoAuth";
+import UserContext from "../Context/UserContext";
 
 const Routers = () => {
     const [path, setPath] = useContext(GlobalContext);
     const {pathname} = useLocation();
+    const [state, actions] = useContext(UserContext);
 
     useEffect(() => {
         if (path.router.currentPath !== pathname) {
@@ -26,7 +27,11 @@ const Routers = () => {
         }
     }, [pathname]);
 
-    setCookie('Access-Token', "sdkfjsldkjflksdjf");
+    useEffect(() => {
+        console.log(state.userInfo.id);
+    }, [state.userInfo]);
+
+    // setCookie('Access-Token', "sdkfjsldkjflksdjf");
 
     return (
         <>
@@ -47,6 +52,8 @@ const Routers = () => {
                                   />
                               }
                 />
+
+                <Route path={'/kakao/login'} render={props => <KakaoAuth {...props}/>}/>
 
             </Switch>
         </>

@@ -12,7 +12,7 @@ const shareMenuList = [
     },
     {
         id: 'kakao',
-        title: 'Kakao Share',
+        title: 'Kko Share',
         icon: <RiKakaoTalkLine size={20}/>
     }
 ]

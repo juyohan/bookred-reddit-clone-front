@@ -11,7 +11,7 @@ const HeaderMenu = ({activeMenu, menuList}) => {
                 {
                     menuList.length > 0 && menuList.map(item => (
                         <HeaderSingleItem key={`HeaderMenu_${item.id}`}
-                                          active={activeMenu === item.id}
+                                          isActive={activeMenu === item.id}
                                           item={item}
                         />
                     ))

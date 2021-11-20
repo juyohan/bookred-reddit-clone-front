@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import {Link} from "react-router-dom";
+import KakaoLogin from "react-kakao-login";
 
 export const AuthDialogBackGround = styled.div`
   display: flex;
@@ -97,7 +98,7 @@ export const AuthButton = styled.div`
   font-size: 1.25rem;
   font-weight: 500;
   cursor: pointer;
-  border-radius: 99px;
+  border-radius: 12px;
   transition: .2s all;
 
   &:hover {

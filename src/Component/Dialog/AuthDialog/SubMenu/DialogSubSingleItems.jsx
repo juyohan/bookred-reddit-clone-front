@@ -1,6 +1,5 @@
 import React, {useContext} from 'react';
 import PropTypes from "prop-types";
-import {useHistory} from "react-router-dom";
 // css
 import {MenuLine, MenuTitle, SubMenuDiv} from "./DialogSubMenu.styles";
 // Context API
@@ -31,31 +30,21 @@ DialogSubItem.propTypes = {
 const DialogSubSingleItems = ({menu, submenu}) => {
     const [dialog, setDialog] = useContext(DialogContext);
     const [user, setUser] = useContext(UserContext);
-    const history = useHistory();
 
     const onClickLogOut = (e) => {
         e.preventDefault();
-        // AuthorAPI.logout()
-        //     .then(res => {
-        //         if (res.status === 200) {
+        // 메뉴창 닫기
         setDialog.setDialogSubMenu(false);
         alert("로그아웃이 되었습니다.");
         // 유저정보 초기화
         setUser.setUserInfo({});
         // 쿠키 삭제
         removeCookie("Access-Token");
-        // 서브메뉴 닫음
-        // setDialog.setDialogSubMenu(false);
         // 홈 화면으로
-        history.push('/');
-        // }
-        // }).catch(err => {
-        //     console.log(err);
-        // })
+        window.location.replace("/");
     }
 
-    const onClickCloseModal = (e) => {
-        // e.preventDefault();
+    const onClickCloseModal = () => {
         setDialog.setDialogSubMenu(false);
     }
 

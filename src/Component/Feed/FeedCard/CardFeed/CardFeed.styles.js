@@ -19,6 +19,7 @@ export const CardFeedDesc = styled.div`
   padding: 5px 8px 10px;
   overflow: hidden;
   mask-image: linear-gradient(180deg, #000 60%, transparent);
+  text-overflow: ellipsis;
   //
   //& > p {
   //  display : inline;

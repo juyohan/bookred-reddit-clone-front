@@ -8,7 +8,7 @@ import DialogContext from "../../../Context/DialogContext";
 // Cookie
 import {getCookie} from "../../../JwtToken/Cookie";
 
-const HeaderSingleItem = ({item, active}) => {
+const HeaderSingleItem = ({item, isActive}) => {
     const [dialog, setDialog] = useContext(DialogContext);
     const history = useHistory();
 
@@ -30,7 +30,7 @@ const HeaderSingleItem = ({item, active}) => {
 
     return (
         <Item to={`${item.id}`}
-              isActive={`${active}`}
+              isActive={`${isActive}`}
               onClick={onClickCheckToken}
         >
             {item.title}
