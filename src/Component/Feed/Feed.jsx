@@ -38,6 +38,7 @@ const Feed = () => {
         if (feedParams.includes(params)) {
             setLoading(true);
             setPageNum(1);
+            setFeedsInfo({});
 
             API.FeedData.getFeedData(params, 0).then(res => {
                 if (res.status === 200) {
