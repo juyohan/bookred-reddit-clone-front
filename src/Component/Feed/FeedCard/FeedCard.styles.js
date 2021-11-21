@@ -5,7 +5,7 @@ export const CardWrapper = styled.div`
   margin-bottom: 10px;
   flex-direction: row;
   border-radius: 5px;
-  cursor: pointer;
+  //cursor: pointer;
   background-color: rgba(255, 255, 255, 0.8);
   border: 1px solid #ccc;
 `

@@ -20,18 +20,18 @@ export const CardFeedDesc = styled.div`
   font-family: Noto Sans, Arial, sans-serif;
 `
 
-export const CardContent = styled.div`
+export const CardContentDiv = styled.div`
   padding-bottom: 1px;
   margin-bottom: -1px;
   font-size: 14px;
   font-weight: 400;
   line-height: 21px;
-  overflow: hidden;
-  height: 100px;
-  word-break: break-word;
   font-family: inherit;
-  mask-image: linear-gradient(180deg, #000 60%, transparent);
-
+  word-break: break-word;
+  overflow: auto;
+  height: auto;
+  mask-image: unset;
+  
   & > p:first-child {
     padding-top: 0;
   }
@@ -42,10 +42,10 @@ export const CardContent = styled.div`
   }
   
   ${(props) => props.open && css`
-    overflow: auto;
-    height: auto;
+    overflow: hidden;
+    height: 80px;
     padding-bottom: 5px;
-    mask-image: unset;
+    mask-image: linear-gradient(180deg, #000 60%, transparent);
   `}
 `
 
@@ -53,18 +53,19 @@ export const UnfoldBtn = styled.div`
   font-family: inherit;
   float: right;
   margin-right: 30px;
-  padding-top: 2px;
+  margin-top: 5px;
   font-size: 14px;
   cursor: pointer;
   width: inherit;
   box-sizing: border-box;
   font-weight: 500;
+  display: none;
   
   &:hover {
     text-decoration: underline black;
   }
   
   ${(props) => props.open && css`
-    display: none;
+    display: block;
   `}
 `
