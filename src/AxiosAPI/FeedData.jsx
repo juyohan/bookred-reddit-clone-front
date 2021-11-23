@@ -44,7 +44,28 @@ export const FeedData = {
                 }
             }
         })
+    },
+    getComments : async function(key) {
+        return await axiosInstance.request( {
+            url : `/api/comment/get`,
+            method : "GET",
+            params : {
+                'feedKey' : key
+            }
+        })
+    },
+    saveComment : async function(data, feedKey) {
+        return await axiosInstance.request({
+            headers : {
+                Authorization : `Bearer ${getCookie('Access-Token')}`
+            },
+            method : "POST",
+            url : `/api/comment/save`,
+            data : {
+                content : data,
+                key : feedKey
+            }
+        })
     }
-
 
 }

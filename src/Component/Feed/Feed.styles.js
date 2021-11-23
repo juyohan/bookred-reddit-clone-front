@@ -5,10 +5,4 @@ export const FeedWrapper = styled.div`
   max-width: 650px;
   padding-top: 50px;
   padding-right: 15px;
-  
-  
 `
-
-export const TopBar = styled.div`
-    
-`;

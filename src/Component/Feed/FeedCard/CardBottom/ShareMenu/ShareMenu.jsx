@@ -21,9 +21,7 @@ const ShareMenu = ({position, open, setOpen, dialogRef}) => {
     const ref = useRef();
 
     useEffect(() => {
-        const click = () => {
-            window.addEventListener('mousedown', checkClick);
-        }
+        const click = () => window.addEventListener('mousedown', checkClick);
         click();
         return () => {
             window.removeEventListener('mousedown', checkClick);

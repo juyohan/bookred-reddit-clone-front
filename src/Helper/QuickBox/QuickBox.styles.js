@@ -11,7 +11,7 @@ export const QuickButtonWrapper = styled.div`
 `
 
 export const QuickButton = styled.button`
-    font-size: 14px;
+  font-size: 14px;
   font-weight: 700;
   letter-spacing: unset;
   line-height: 17px;

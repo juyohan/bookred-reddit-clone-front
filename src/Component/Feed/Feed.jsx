@@ -23,6 +23,7 @@ const preTitle = (title) => {
 
 const Feed = () => {
     const [feed, setFeed] = useContext(FeedContext);
+
     const {feedsInfo, loading, fetching, error, model} = feed;
     const {setFeedsInfo, setLoading, setFetching, setError, setModel} = setFeed;
 
@@ -102,22 +103,24 @@ const Feed = () => {
 
     if (loading)
         return (
-            <FeedLoading/>
+            <FeedWrapper>
+                <FeedLoading/>
+            </FeedWrapper>
         )
 
     if (error)
         return (
-            <div>
-                에러가 뜸.
-            </div>
+            <FeedWrapper>
+                <div>
+                    에러가 뜸.
+                </div>
+            </FeedWrapper>
         )
 
     return (
         <FeedWrapper>
             <FeedBar params={params}/>
             <FeedCard feedsInfo={feedsInfo}/>
-
-
         </FeedWrapper>
     )
 }

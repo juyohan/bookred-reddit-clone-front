@@ -14,6 +14,7 @@ import {TimeCalculation} from "../../../Helper/TimeCalculation";
 import {LikeCountFun} from "../../../Helper/LikeCountFun";
 
 const FeedCardItem = ({feed}) => {
+    // console.log(feed);
     const [dialog, setDialog] = useContext(DialogContext);
 
     const onClickFeed = () => {
@@ -40,6 +41,7 @@ const FeedCardItem = ({feed}) => {
                     />
                     <CardBottom commentCount={feed.commentCount}
                                 path={feed.path}
+                                feedKey={feed.feedKey}
                     />
                 </CardContentWrapper>
             </CardWrapper>

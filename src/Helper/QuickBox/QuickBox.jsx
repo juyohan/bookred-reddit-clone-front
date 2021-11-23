@@ -19,9 +19,7 @@ const QuickBox = () => {
     }
 
     useEffect(() => {
-        const watch = () => {
-            window.addEventListener("scroll", handleFollow);
-        }
+        const watch = () => window.addEventListener("scroll", handleFollow);
         watch();
         return () => {
             window.removeEventListener("scroll", handleFollow);
