@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 import FeedCardItem from "./FeedCardItem";
 
 const FeedCard = ({feedsInfo}) => {
+    // console.log(feedsInfo);
     return (
         <>
             {
-                Array.from(feedsInfo).map(feed => (
+                feedsInfo.length > 0 && feedsInfo.map(feed => (
                     <FeedCardItem key={`Feed_${feed.feedId}`}
                                   feed={feed}
                     />

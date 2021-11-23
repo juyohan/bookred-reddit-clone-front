@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import {Link} from "react-router-dom";
 
 export const CardBottomWrapper = styled.div`
     display: flex;
@@ -13,7 +12,7 @@ export const CardBottomWrapper = styled.div`
   margin-bottom: 1px;
 `
 
-export const CommentButton = styled(Link)`
+export const CommentButton = styled.button`
     padding: 8px;
   word-break: normal;
   margin-right: 4px;
@@ -25,7 +24,9 @@ export const CommentButton = styled(Link)`
   border: none;
   color: gray;
   text-decoration: none;
-  
+  font-weight: 700;
+  font-size: 12px;
+
   &:hover {
     background-color: lightgray;
   }
@@ -76,7 +77,6 @@ export const EtcButton = styled.button`
   vertical-align: middle;
   cursor: pointer;
   padding: 0 4px;
-  width: 100%;
   
   &:hover{
     background-color: lightgray;

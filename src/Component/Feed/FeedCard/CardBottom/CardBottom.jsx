@@ -1,29 +1,24 @@
-import React, {useContext, useRef, useState} from "react";
+import React, {useCallback, useContext, useRef, useState} from "react";
 import PropTypes from "prop-types";
 // css
 import {CardBottomWrapper, CommentButton, EtcButton, EtcButtonDiv, ShareButton} from "./CardBottom.styles";
 // Icons
 import {AiOutlineComment, BiDotsHorizontalRounded, RiShareForwardLine} from "react-icons/all";
-// Context API
-import DialogContext from "../../../../Context/DialogContext";
 // Component
 import ShareMenu from "./ShareMenu";
+import FeedComments from "./FeedComments";
+import {API} from "../../../../AxiosAPI";
+import FeedCommentContext from "../../../../Context/FeedCommentContext";
+import FeedContext from "../../../../Context/FeedContext";
 
-const CardBottom = ({commentCount, path}) => {
-    const [dialog, setDialog] = useContext(DialogContext);
+const CardBottom = ({commentCount, feedKey}) => {
     const [shareOpen, setShareOpen] = useState(false);
-    // const [etcOpen, setEtcOpen] = useState(false);
     const [subMenuPosition, setSubMenuPosition] = useState({
         positionX: null,
         positionY: null
     })
     const ref = useRef();
-
-    const onClickOpenFeedDialog = (e) => {
-        // 현재 막음.
-        e.preventDefault();
-        setDialog.setFeedDialog(true);
-    }
+    const [open, setOpen] = useState(false);
 
     const onClickOpenShareMenu = (e) => {
         if (shareOpen === true)
@@ -37,11 +32,20 @@ const CardBottom = ({commentCount, path}) => {
         }
     }
 
+    const onClickOpenComments = (e) => {
+        e.preventDefault();
+        setOpen(true);
+        // API.FeedData.getComments(feedKey).then(res => {
+        //     if (res.status === 200) {
+        //         setTest(res.data.data);
+        //     }
+        // });
+    }
+
     return (
         <>
             <CardBottomWrapper>
-                <CommentButton onClick={onClickOpenFeedDialog}
-                               to={`${path}`}
+                <CommentButton onClick={onClickOpenComments}
                 >
                     <AiOutlineComment size={20}/>
                     {commentCount} Comments
@@ -58,7 +62,6 @@ const CardBottom = ({commentCount, path}) => {
                         <BiDotsHorizontalRounded size={20}/>
                     </EtcButton>
                 </EtcButtonDiv>
-                {/*<div style={{flex : '1 1 auto'}}/>*/}
             </CardBottomWrapper>
             {/* 공유하는 Dialog */}
             <ShareMenu open={shareOpen}
@@ -66,6 +69,11 @@ const CardBottom = ({commentCount, path}) => {
                        position={subMenuPosition}
                        dialogRef={ref}
             />
+            {/* 댓글 */}
+            {
+                open ? <FeedComments feedKey={feedKey}/>
+                    : null
+            }
         </>
     );
 }
