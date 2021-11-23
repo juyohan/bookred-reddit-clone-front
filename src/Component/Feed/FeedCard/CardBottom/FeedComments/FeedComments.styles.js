@@ -68,7 +68,7 @@ export const CommentUsername = styled.div`
   display: inline;
   font-weight: 600;
   line-height: 1.2308;
-  font-size: 0.8125rem;
+  font-size: 14px;
   max-width: 100%;
   word-wrap: break-word;
   -webkit-font-smoothing: antialiased;
@@ -77,7 +77,7 @@ export const CommentUsername = styled.div`
 
 export const CommentText = styled.div`
   text-align: start;
-  font-size: 0.9375rem;
+  font-size: 14px;
   font-weight: 400;
   word-wrap: break-word;
   text-wrap: normal;
@@ -127,7 +127,7 @@ export const CommentInput = styled.textarea`
   word-break: break-word;
   white-space: pre-wrap;
   text-align: initial;
-  font-size: .9357rem;
+  font-size: 12px;
   outline: none;
   width: 100%;
   border: none;
