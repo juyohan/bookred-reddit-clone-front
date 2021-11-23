@@ -1,15 +1,19 @@
 import React from 'react';
 import PropTypes from "prop-types";
+import FbImageLibrary from 'react-fb-image-grid'
 // css
 import {
     CardFeedTitle,
     CardFeedWrapper,
 } from "./CardFeed.styles";
 // Component
-import CardImage from "./CardImage";
 import CardContent from "./CardContent";
 
 const CardFeed = ({title, feedContent, fileNames}) => {
+    const imageList = [
+        'http://localhost:8080/api/file/image?fileName=SpringSecurity.png',
+        'http://localhost:8080/api/file/image?fileName=jpa.png'];
+
     return (
         <CardFeedWrapper>
             <CardFeedTitle>
@@ -19,8 +23,8 @@ const CardFeed = ({title, feedContent, fileNames}) => {
             </CardFeedTitle>
             <CardContent feedContent={feedContent}/>
             {
-                fileNames.length > 0 ?
-                    <CardImage fileNames={fileNames}/>
+                imageList.length > 0 ?
+                    <FbImageLibrary images={imageList} countFrom={5}/>
                     : null
             }
         </CardFeedWrapper>
