@@ -20,9 +20,13 @@
   - *react-router-dom*
   - *react-icons*
   - *react-loader-spinner*
+  - *react-fb-image-grid*
+  - *react-cookie*
   - *axios*
   - *styled-component*  
   - *prop-types*
+  - *draft-js*
+  - *draftjs-to-html & html-to-draftjs*
 </br>
 
 ## 📀 프로젝트 배포       
